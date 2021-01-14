@@ -1,27 +1,39 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Rating extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
 
-    }
+    };
   }
+
   render() {
+    const {
+      rating,
+    } = this.props;
+    const {
+      name, sales, stars,
+    } = rating;
     return (
       <div>
         <div id="name">
-          {this.props.rating.name}
+          {name}
         </div>
         <div id="sales">
-          {this.props.rating.sales} Sales
+          {`${sales} Sales`}
         </div>
         <div id="rating">
-          {this.props.rating.stars}
+          {stars}
         </div>
       </div>
-    )
+    );
   }
 }
+
+Rating.propTypes = {
+  rating: PropTypes.element.isRequired,
+};
 
 export default Rating;

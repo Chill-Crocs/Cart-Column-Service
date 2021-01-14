@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './client/index.js',
+  entry: './client/index.jsx',
   output: {
     filename: 'app.js',
     path: path.resolve(__dirname, 'public'),
@@ -16,13 +16,14 @@ module.exports = {
           options: {
             presets: [
               ['@babel/preset-env'],
-              ["@babel/preset-react"]
-            ]
-          }
-        }
-      }
-    ]
+              ['@babel/preset-react'],
+            ],
+          },
+        },
+      },
+    ],
   },
-  mode: "development",
-  watch: true
+  resolve: { extensions: ['.js', '.jsx'] },
+  mode: 'development',
+  watch: true,
 };
