@@ -2,17 +2,18 @@ import React from 'react';
 
 class Shipping extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
 
-    }
+    };
   }
+
   render() {
     return (
       <div>
         Shipping
       </div>
-    )
+    );
   }
 }
 

@@ -1,72 +1,78 @@
 import React from 'react';
 import axios from 'axios';
 
-import Rating from './Rating.jsx';
-import Info from './Info.jsx';
-import Selector from './Selector.jsx';
-import ExtDetails from './ExtDetails.jsx';
-import Shipping from './Shipping.jsx';
-import Seller from './Seller.jsx';
+import Rating from './Rating';
+import Info from './Info';
+import Selector from './Selector';
+import ExtDetails from './ExtDetails';
+import Shipping from './Shipping';
+import ShopPolicy from './ShopPolicy';
+import Seller from './Seller';
 
 class App extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      render: false,
       rating: {
         name: '',
         sales: -1,
-        stars: -1
+        stars: -1,
       },
       info: {
         tags: [],
         price: -1,
-        availability: null
+        availability: false,
       },
       selectors: [],
       extDetails: {
-        details: '',
-        description: ''
+        details: [],
+        description: '',
       },
       shipping: {
-        arrival: '',
-        ships: '',
-        delivered: ''
+        origin: -1,
+        exchanges: false,
+      },
+      shopPolicy: {
+        lastUpdated: '',
+        returns: false,
+        noReturnTypes: [],
       },
       seller: {
         name: '',
-        company: '',
-        imageURL: ''
-      }
-    }
-    this.clickHandler = this.clickHandler.bind(this);
+        role: '',
+        imageURL: '',
+      },
+    };
   }
 
-  clickHandler() {
-    axios.get('https://api.github.com/gists/372c095e21a5b94bff5e6767a2e40299')
-      .then(result => {
-        const {rating, info, selectors, extDetails, shipping, seller} = JSON.parse(result.data.files['example-data.json'].content);
-        this.setState({render: true, rating, info, selectors, extDetails, shipping, seller})
-      })
+  componentDidMount() {
+    const randNum = Math.round(Math.random() * 100);
+    axios.get(`/api/item/${randNum}`)
+      .then((result) => {
+        const {
+          rating, info, selectors, extDetails, shipping, shopPolicy, seller,
+        } = result.data;
+        this.setState({
+          rating, info, selectors, extDetails, shipping, shopPolicy, seller,
+        });
+      });
   }
 
   render() {
-    if (this.state.render) {
-      return (
-        <div>
-          <Rating rating={this.state.rating}/>
-          <Info info={this.state.info}/>
-          <Selector selectors={this.state.selectors}/>
-          <ExtDetails extDetails={this.state.extDetails}/>
-          <Shipping shipping={this.state.shipping}/>
-          <Seller seller={this.state.seller}/>
-        </div>
-      )
-    } else {
-      return (
-        <button onClick={this.clickHandler}>GET Item Cart</button>
-      )
-    }
+    const {
+      rating, info, selectors, extDetails, shipping, shopPolicy, seller,
+    } = this.state;
+    return (
+      <div>
+        <Rating rating={rating} />
+        <Info info={info} />
+        <Selector selectors={selectors} />
+        <ExtDetails extDetails={extDetails} />
+        <Shipping shipping={shipping} />
+        <ShopPolicy shopPolicy={shopPolicy} />
+        <Seller seller={seller} />
+      </div>
+    );
   }
 }
 
