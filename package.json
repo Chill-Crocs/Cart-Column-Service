@@ -4,7 +4,7 @@
   "description": "Is the Cart-Service",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest /tests",
     "start": "nodemon server/index.js",
     "watch": "webpack",
     "seed": "node server/seed/dummy-data.js"

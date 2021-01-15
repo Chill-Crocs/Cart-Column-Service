@@ -18,7 +18,7 @@ describe('Data generator function', () => {
     expect(Array.isArray(testData2.info.tags)).toBe(true);
     expect(Array.isArray(testData3.info.tags)).toBe(true);
   });
-  test('should create a selector lists with varying lengths', () => {
+  test('should create selector lists with varying lengths', () => {
     const length1 = testData1.selectors.length;
     const length2 = testData2.selectors.length;
     const length3 = testData3.selectors.length;
