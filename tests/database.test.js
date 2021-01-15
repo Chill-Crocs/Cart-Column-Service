@@ -1,5 +1,9 @@
-const Cart = require('../../database/Cart');
-const createData = require('./createData.js');
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-undef */
+import '@babel/polyfill';
+
+const { MongoClient } = require('mongodb');
 
 const data = {
   _id: 0,
@@ -52,16 +56,30 @@ const data = {
   },
 };
 
-function add() {
-  const arr = [];
-  arr.push(data);
+describe('insert', () => {
+  let connection;
+  let db;
 
-  for (let i = 1; i < 100; i += 1) {
-    arr.push(createData(i));
-  }
+  beforeAll(async () => {
+    connection = await MongoClient.connect('mongodb://localhost/croxy-cart', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    db = await connection.db();
+    await db.collection('tests').deleteMany({});
+  });
 
-  Cart.CartModel.create(arr)
-    .then(() => process.exit());
-}
+  afterAll(async () => {
+    await connection.close();
+  });
 
-add();
+  it('should insert a doc into collection', async () => {
+    const tests = db.collection('tests');
+
+    const mockData = data;
+    await tests.insertOne(mockData);
+
+    const insertedData = await tests.findOne({ _id: 0 });
+    expect(insertedData).toEqual(mockData);
+  });
+});
