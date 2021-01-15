@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-underscore-dangle */
+/* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
 /* eslint-disable no-undef */
 import '@babel/polyfill';
 

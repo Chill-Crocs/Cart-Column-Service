@@ -48,6 +48,7 @@ class App extends React.Component {
   componentDidMount() {
     const randNum = Math.round(Math.random() * 100);
     axios.get(`/api/item/${randNum}`)
+    // axios.get('/api/item/0')
       .then((result) => {
         const {
           rating, info, selectors, extDetails, shipping, shopPolicy, seller,
