@@ -19,10 +19,3 @@ describe('Rating render', () => {
     expect(wrapper.find('ul')).not.toExist();
   });
 });
-
-describe('Rating props', () => {
-  test('should have required props', () => {
-    expect(wrapper.find('span')).toExist();
-    expect(wrapper.find('ul')).not.toExist();
-  });
-});
