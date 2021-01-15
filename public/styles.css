@@ -39,3 +39,12 @@
   border-width: 1px;
   border-top: none;
 }
+
+.tags {
+  display: inline;
+  font-size: 26px;
+  line-height: 32px;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 200;
+  letter-spacing: 0.35px;
+}
