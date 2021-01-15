@@ -19,6 +19,7 @@
   border-color: grey;
   border-width: 1px;
   border-top: none;
+  border-right: none;
 }
 
 #cart {
@@ -38,4 +39,62 @@
   border-color: grey;
   border-width: 1px;
   border-top: none;
+}
+
+#ratingContainer {
+  line-height: 1.4;
+  margin-top: 40px;
+}
+
+#name, #sales {
+  font-family: -apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+  font-weight: 300;
+  font-stretch: extra-expanded;
+  letter-spacing: .3px;
+}
+
+#sales {
+  font-size: 12px;
+}
+
+#name:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#sales:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#sales, #rating {
+  display: inline-flex;
+}
+
+#rating {
+  display: inline-block !important;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+#rating:hover {
+  cursor: pointer;
+}
+
+/* .start {
+  display: block;
+  overflow: hidden;
+  --vh: 2.16px;
+} */
+
+svg {
+  width: 3.5%;
+  overflow: visible;
+}
+
+#divider {
+  font-family:  -apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+  letter-spacing: 1px;
+  color: #e1e3df;
+  font-weight: 200;
 }

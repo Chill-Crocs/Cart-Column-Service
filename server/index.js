@@ -3,7 +3,7 @@ const express = require('express');
 const Cart = require('../database/Cart');
 
 const app = express();
-const port = 3000;
+const port = 3003;
 
 app.use(express.static('public'));
 
