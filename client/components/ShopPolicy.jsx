@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Seller extends React.Component {
+class ShopPolicy extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,10 +11,10 @@ class Seller extends React.Component {
   render() {
     return (
       <div>
-        Seller
+        ShopPolicy
       </div>
     );
   }
 }
 
-export default Seller;
+export default ShopPolicy;
