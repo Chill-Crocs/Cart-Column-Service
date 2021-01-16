@@ -1,3 +1,5 @@
+/* MAIN GRID START */
+
 #grid-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -40,6 +42,10 @@
   border-width: 1px;
   border-top: none;
 }
+
+/* MAIN GRID END */
+
+/* RATING STYLE START */
 
 #ratingContainer {
   line-height: 1.4;
@@ -99,6 +105,10 @@ svg {
   font-weight: 200;
 }
 
+/* RATING STYLE END */
+
+/* INFO STYLE START */
+
 .tags {
   display: inline;
   font-size: 26px;
@@ -107,3 +117,5 @@ svg {
   font-weight: 200;
   letter-spacing: 0.35px;
 }
+
+/* INFO STYLE END */

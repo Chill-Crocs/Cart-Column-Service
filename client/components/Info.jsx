@@ -15,6 +15,13 @@ class Info extends React.Component {
     const { info } = this.props;
     const { tags, price, availability } = info;
     let i = 0;
+    let separator;
+    const randNum = Math.random();
+    if (randNum > 0.49) {
+      separator = '|';
+    } else {
+      separator = '-';
+    }
     function mapFunc(value) {
       i += 1;
       if (i === 1 && tags.length > 1) {
@@ -22,7 +29,7 @@ class Info extends React.Component {
           <h1 key={i} className="tags">
             {value}
             <span> </span>
-            |
+            {separator}
           </h1>
         );
       }
@@ -39,18 +46,19 @@ class Info extends React.Component {
           <span> </span>
           {value}
           <span> </span>
-          |
+          {separator}
         </p>
       );
     }
     const viewTags = tags.map(mapFunc);
+    const priceView = `$${(price / 100).toFixed(2)}`;
     return (
       <div>
         <div>
           {viewTags}
         </div>
         <div>
-          {price}
+          {priceView}
         </div>
         <div>
           {availability}
