@@ -32,6 +32,7 @@
   border-width: 1px;
   border-top: none;
   border-left: none;
+  border-right: none;
 }
 
 #reviews {
@@ -112,10 +113,34 @@ svg {
 .tags {
   display: inline;
   font-size: 26px;
-  line-height: 32px;
+  line-height: 35px;
   font-family: 'Helvetica Neue', sans-serif;
   font-weight: 200;
   letter-spacing: 0.35px;
+}
+
+.tagList {
+  padding-top: 15px;
+}
+
+.price {
+  font-weight: 500;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 26px;
+  line-height: 20px;
+}
+
+.priceStock {
+  display: inline-flex;
+  padding-top: 15px;
+}
+
+.check {
+  display: block;
+  float: right;
+  right: 0;
+  text-align: right;
+  margin-right: 25px;
 }
 
 /* INFO STYLE END */
