@@ -3,7 +3,7 @@ const faker = require('faker');
 function createData(id) {
   function getTags() {
     const arr = [];
-    for (let i = 0; i < Math.round(Math.random() * 12); i += 1) {
+    for (let i = 0; i < Math.round(Math.random() * 12 + 1); i += 1) {
       arr.push(faker.commerce.productAdjective());
     }
     return arr;
