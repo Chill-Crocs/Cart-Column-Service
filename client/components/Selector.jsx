@@ -11,20 +11,21 @@ class Selector extends React.Component {
 
   render() {
     const { selectors } = this.props;
-    let i = 0;
-    let j = 0;
+    let i = -1;
+    let j = -1;
     function selectorMap(options) {
       j += 1;
       return (
-        <option key={j} className="optionsBox">
+        <option key={j} className={`optionsBox${(i).toString() + j.toString()} optionsBox}`}>
           {options}
         </option>
       );
     }
     function optionMap(option) {
       i += 1;
+      j = -1;
       return (
-        <div key={i} className="optionsName">
+        <div key={i} className={`optionsName${i} optionsName`}>
           {option.name}
           <br />
           <select className="options">
