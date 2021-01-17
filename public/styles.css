@@ -1,4 +1,4 @@
-/* MAIN GRID START */
+/******************************** MAIN GRID START ************************************/
 
 #grid-container {
   display: grid;
@@ -44,9 +44,9 @@
   border-top: none;
 }
 
-/* MAIN GRID END */
+/******************************** MAIN GRID END ************************************/
 
-/* RATING STYLE START */
+/******************************** RATING STYLE START ************************************/
 
 #ratingContainer {
   line-height: 1.4;
@@ -88,12 +88,6 @@
   cursor: pointer;
 }
 
-/* .start {
-  display: block;
-  overflow: hidden;
-  --vh: 2.16px;
-} */
-
 svg {
   width: 3.5%;
   overflow: visible;
@@ -106,9 +100,9 @@ svg {
   font-weight: 200;
 }
 
-/* RATING STYLE END */
+/******************************** RATING STYLE END ************************************/
 
-/* INFO STYLE START */
+/******************************** INFO STYLE START ************************************/
 
 .tags {
   display: inline;
@@ -146,4 +140,54 @@ svg {
   margin-top: 6px;
 }
 
-/* INFO STYLE END */
+/******************************** INFO STYLE END ************************************/
+
+/******************************** SELECTORS STYLE START ************************************/
+
+.selectors {
+  margin-top: 18px;
+}
+
+.optionsName {
+  font-size: 13px;
+  font-family: 'Helvetica', sans-serif;
+  line-height: 28px;
+  font-weight: lighter;
+  position: relative;
+  max-width: 400px;
+  margin-bottom: 6px;
+}
+
+.options {
+  font-size: 15px;
+  font-family: 'Helvetica', sans-serif;
+  font-weight: 300;
+  height: 45px;
+  box-shadow: 0 1px 6px 0 rgba(34, 34, 34, 0.15);
+  padding-left: 10px;
+  padding-right: 34px;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+  border-color: rgba(34, 34, 34, 0.15);
+}
+
+.options:hover {
+  border-color: rgba(34, 34, 34, 0.5);
+  box-shadow: 0 1px 12px 0 rgba(34, 34, 34, 0.2);
+}
+
+.options:focus {
+  border-color: black;
+  outline: none;
+}
+
+.optionsName select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 viewBox%3D%220 0 24 24%22%3E%3Cpolygon fill%3D%22%23222222%22 points%3D%2216.5 10 12 16 7.5 10 16.5 10%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: 98%;
+  background-size: 23px 23px;
+}
+
+/******************************** SELECTORS STYLE END ************************************/

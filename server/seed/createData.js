@@ -17,7 +17,7 @@ function createData(id) {
   }
   function getOptions() {
     const arr = [];
-    for (let i = 0; i < Math.round(Math.random() * 10); i += 1) {
+    for (let i = 0; i < Math.round(Math.random() * 9 + 1); i += 1) {
       arr.push(faker.commerce.color());
     }
     return arr;
