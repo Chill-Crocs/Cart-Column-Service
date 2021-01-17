@@ -50,23 +50,41 @@ class Info extends React.Component {
         </p>
       );
     }
-    const viewTags = tags.map(mapFunc);
-    const priceView = `$${(price / 100).toFixed(2)}`;
-    return (
-      <div>
-        <div className="tagList">
-          {viewTags}
-        </div>
-        <div className="priceStock">
-          <div className="price">
-            {priceView}
-          </div>
+    function getAvailable(avail) {
+      if (avail) {
+        return (
           <div className="check">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="6 -4 18 24" aria-hidden="true" focusable="false"><path d="M9.057,20.471L2.293,13.707a1,1,0,0,1,1.414-1.414l5.236,5.236,11.3-13.18a1,1,0,1,1,1.518,1.3Z" /></svg>
             <span> </span>
             In Stock
           </div>
-          {availability}
+        );
+      }
+      return (
+        <div className="notCheck">
+          Only 1 left!
+        </div>
+      );
+    }
+    const tagsView = tags.map(mapFunc);
+    const priceView = `$${(price / 100).toFixed(2)}`;
+    const availabilityView = getAvailable(availability);
+    return (
+      <div>
+        <div className="tagList">
+          {tagsView}
+        </div>
+        <div className="priceStock">
+          <div className="price">
+            {priceView}
+          </div>
+          {/* <div className="check">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="6 -4 18 24" aria-hidden="true" focusable="false"><path d="M9.057,20.471L2.293,13.707a1,1,0,0,1,1.414-1.414l5.236,5.236,11.3-13.18a1,1,0,1,1,1.518,1.3Z" /></svg>
+            <span> </span>
+            In Stock
+          </div>
+          {availability} */}
+          {availabilityView}
         </div>
       </div>
     );

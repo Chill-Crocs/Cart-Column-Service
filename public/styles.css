@@ -136,11 +136,14 @@ svg {
 }
 
 .check {
-  display: block;
-  float: right;
-  right: 0;
   text-align: right;
   margin-right: 25px;
+}
+
+.notCheck {
+  color: red;
+  margin-left: 260px;
+  margin-top: 6px;
 }
 
 /* INFO STYLE END */
