@@ -42,7 +42,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    const randNum = Math.round(Math.random() * 100);
+    const randNum = Math.round(Math.random() * 99);
     axios.get(`/api/item/${randNum}`)
     // axios.get('/api/item/0')
       .then((result) => {
@@ -64,7 +64,7 @@ class App extends React.Component {
       availability: info.availability,
     };
     return (
-      <div>
+      <div className="croxy-cart-col">
         <Rating rating={rating} />
         <Info info={info} />
         <Selector selectors={selectors} />

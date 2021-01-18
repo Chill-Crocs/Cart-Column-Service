@@ -31,7 +31,7 @@
   border-color: grey;
   border-width: 1px;
   border-top: none;
-  border-left: none;
+  /* border-left: none; */
   border-right: none;
 }
 
@@ -51,6 +51,7 @@
 #ratingContainer {
   line-height: 1.4;
   margin-top: 40px;
+  margin-left: 2px;
 }
 
 #name, #sales {
@@ -104,6 +105,10 @@ svg {
 
 /******************************** INFO STYLE START ************************************/
 
+.cart-info {
+  margin-left: 2px;
+}
+
 .tags {
   display: inline;
   font-size: 26px;
@@ -146,6 +151,7 @@ svg {
 
 .selectors {
   margin-top: 18px;
+  padding-left: 2px;
 }
 
 .optionsName {
@@ -191,3 +197,101 @@ svg {
 }
 
 /******************************** SELECTORS STYLE END ************************************/
+
+/******************************** EXTDETAILS STYLE START ************************************/
+
+
+.extDetails-buttons button {
+  margin-top: 11px;
+  border-color: #222;
+  border-radius: 50px;
+  padding: 13px 32px;
+  font-size: 16px;
+  width: 95%;
+  display: block;
+  position: static;
+}
+
+.extDetails-buttons button:focus {
+  outline: 0;
+}
+
+.buyButton, .cartButton {
+  padding-left: 2px;
+  margin-top: 9px;
+}
+
+/* .cartButton {
+  padding-left: 2px;
+  margin-bottom: 9px;
+} */
+
+.buyButton:hover, .cartButton:hover {
+  transform: scaleX(1.015) scaleY(1.035) perspective(1px);
+  z-index: 1000;
+}
+
+.cartButton button:hover {
+  background-color: rgba(0, 0, 0, 0.829);
+}
+
+.buyButton button {
+  background-color: white;
+  color: #222;
+}
+
+/* .buyButton button:hover {
+  border-top: 10px;
+  border-bottom: 10px;
+} */
+
+.cartButton button {
+  background-color: #222;
+  color: white;
+}
+
+.inline-svg {
+  display: inline-flex;
+}
+
+.descriptor {
+  margin-left: 52px;
+  margin-top: 10px;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 13px;
+  font-weight: 100;
+  letter-spacing: 1px;
+  padding-left: 2px;
+}
+
+.descriptor b {
+  font-weight: 500;
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+
+/******************************** EXTDETAILS STYLE END ************************************/
