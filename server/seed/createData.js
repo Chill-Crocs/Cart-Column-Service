@@ -43,19 +43,6 @@ function createData(id) {
         availability: getRandBool(),
       },
       selectors: getSelectors(),
-      extDetails: {
-        details: [
-          {
-            iconUrl: 'Hand',
-            description: faker.commerce.productAdjective(),
-          },
-          {
-            iconUrl: 'Stars',
-            description: `Materials:  + ${faker.commerce.productMaterial()}`,
-          },
-        ],
-        description: faker.commerce.productDescription(),
-      },
       shipping: {
         origin: faker.address.zipCode(),
         exchanges: getRandBool(),

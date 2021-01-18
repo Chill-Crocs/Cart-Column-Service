@@ -24,10 +24,6 @@ class App extends React.Component {
         availability: false,
       },
       selectors: [],
-      extDetails: {
-        details: [],
-        description: '',
-      },
       shipping: {
         origin: -1,
         exchanges: false,
@@ -51,18 +47,22 @@ class App extends React.Component {
     // axios.get('/api/item/0')
       .then((result) => {
         const {
-          rating, info, selectors, extDetails, shipping, shopPolicy, seller,
+          rating, info, selectors, shipping, shopPolicy, seller,
         } = result.data;
         this.setState({
-          rating, info, selectors, extDetails, shipping, shopPolicy, seller,
+          rating, info, selectors, shipping, shopPolicy, seller,
         });
       });
   }
 
   render() {
     const {
-      rating, info, selectors, extDetails, shipping, shopPolicy, seller,
+      rating, info, selectors, shipping, shopPolicy, seller,
     } = this.state;
+    const extDetails = {
+      sales: rating.sales,
+      availability: info.availability,
+    };
     return (
       <div>
         <Rating rating={rating} />
