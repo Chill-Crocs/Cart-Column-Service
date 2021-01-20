@@ -491,11 +491,13 @@ svg {
   position: fixed;
   margin: auto;
   left: 440px;
-  top: 132px;
+  top: 58px;
   max-width: 362px;
   width: 100%;
   z-index: 10;
   padding: 30px;
+  overflow-y: auto;
+  max-height: 500px;
 }
 
 /* #modal-close-button {
@@ -504,7 +506,7 @@ svg {
 
 .close-button {
   position: fixed;
-  top: 138px;
+  top: 64px;
   left: 872px;
   border-radius: 30px;
   background: none;
@@ -537,7 +539,7 @@ svg {
   display: none;
   /* overflow-y: auto;
   overflow-x: hidden; */
-  overflow: hidden;
+  overflow: scroll;
   position: fixed;
   top: 0;
   left: 0;
@@ -551,7 +553,6 @@ svg {
   display: flex;
   /* overflow-y: auto;
   overflow-x: hidden; */
-  overflow: hidden;
   position: fixed;
   top: 0;
   left: 0;
@@ -559,6 +560,30 @@ svg {
   height: 100%;
   z-index: 80;
   background: rgba(34, 34, 34, 0.65);
+}
+
+.modal-content {
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.main-title {
+  font-size: 32px;
+  font-weight: 300;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.sub-title {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.small-grey-text {
+  font-size: 11px;
+  color: #595959
 }
 
 /******************************** SHIPPING STYLE END ************************************/

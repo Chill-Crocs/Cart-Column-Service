@@ -38,29 +38,42 @@ class ShippingPolicies extends React.Component {
     if (returns) {
       return (
         <div>
-          Returns & Exchanges
+          <span className="title">Returns & Exchanges</span>
           <br />
-          I gladly accept exchanges and cancellations
           <br />
-          Contact me within: 14 days of delivery
-          Ship items back within: 30 days of delivery
-          Request a cancellation within: 1 hour of purchase
+          <span className="sub-title">I gladly accept exchanges and cancellations</span>
           <br />
-          I don't accept returns
+          <span className="small-grey-text">
+            Contact me within: 14 days of delivery
+            <br />
+            Ship items back within: 30 days of delivery
+            <br />
+            Request a cancellation within: 1 hour of purchase
+          </span>
           <br />
-          But please contact me if you have any problems with your order.
           <br />
-          The following items can't be returned or exchanged
+          <span className="sub-title">I don't accept returns</span>
           <br />
-          Because of the nature of these items, unless they arrive damaged or defective,
-          I can't accept returns for:
+          <span className="small-grey-text">
+            But please contact me if you have any problems with your order.
+          </span>
           <br />
-          {this.getReturnTypes()}
           <br />
-          Conditions of return
+          <span className="sub-title">The following items can't be returned or exchanged</span>
           <br />
-          Buyers are responsible for return shipping costs. If the item is not returned
-          in its original condition, the buyer is responsible for any loss in value.
+          <span className="small-grey-text">
+            Because of the nature of these items, unless they arrive damaged or defective,
+            I can't accept returns for:
+            <br />
+            {this.getReturnTypes()}
+          </span>
+          <br />
+          <span className="sub-title">Conditions of return</span>
+          <br />
+          <span className="small-grey-text">
+            Buyers are responsible for return shipping costs. If the item is not returned
+            in its original condition, the buyer is responsible for any loss in value.
+          </span>
         </div>
       );
     }
@@ -88,11 +101,18 @@ class ShippingPolicies extends React.Component {
           </div>
           <div className="modal-container">
             <div className="modal-content">
-              {name}
+              <span className="main-title">
+                Shop policies for
+                <span> </span>
+                {name}
+              </span>
               <br />
-              Last updated on
-              <span> </span>
-              {moment(lastUpdated).format('MMM D YY')}
+              <span className="small-grey-text">
+                Last updated on
+                <span> </span>
+                {moment(lastUpdated).format('MMM D, YYYY')}
+              </span>
+              <br />
               <br />
               {this.getExchanges()}
             </div>
