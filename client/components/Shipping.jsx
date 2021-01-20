@@ -8,20 +8,32 @@ class Shipping extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      modalClass: 'hide',
     };
+    this.showModal = this.showModal.bind(this);
+  }
+
+  showModal() {
+    let { modalClass } = this.state;
+    if (modalClass === 'hide') {
+      modalClass = 'show';
+    } else {
+      modalClass = 'hide';
+    }
+    this.setState({ modalClass });
   }
 
   render() {
-    const { shipping, distance } = this.props;
+    const { shipping, distance, shopPolicy, name } = this.props;
     const { exchanges } = shipping;
-    const orderPlaced = moment().format('MMM D');
-    const orderShipped = `${moment().add(1, 'd').format('MMM D')} - ${moment().add(2, 'd').format('D')}`;
-    const shippedDate = getShippedDate();
+    const { modalClass } = this.state;
     function getShippedDate() {
       const days = Math.round((distance / 1440) + 3);
       return `${moment().add(days, 'd').format('MMM D')} - ${moment().add(9, 'd').format('D')}`;
     }
+    const orderPlaced = moment().format('MMM D');
+    const orderShipped = `${moment().add(1, 'd').format('MMM D')} - ${moment().add(2, 'd').format('D')}`;
+    const shippedDate = getShippedDate();
     return (
       <div id="shipping-collapse">
         <div>
@@ -85,7 +97,12 @@ class Shipping extends React.Component {
         </div>
         <div>
           <ShippingCost />
-          <ShippingPolicies />
+          <ShippingPolicies
+            shopPolicy={shopPolicy}
+            name={name}
+            modalClass={modalClass}
+            showModal={this.showModal}
+          />
         </div>
       </div>
     );

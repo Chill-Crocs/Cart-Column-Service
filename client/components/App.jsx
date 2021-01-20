@@ -82,6 +82,7 @@ class App extends React.Component {
       sales: rating.sales,
       availability: info.availability,
     };
+    const { name } = rating;
     return (
       <div className="croxy-cart-col">
         <Rating rating={rating} />
@@ -92,6 +93,7 @@ class App extends React.Component {
           distance={distance}
           shipping={shipping}
           shopPolicy={shopPolicy}
+          name={name}
         />
         <Seller seller={seller} />
       </div>

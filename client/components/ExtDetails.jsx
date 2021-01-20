@@ -42,10 +42,10 @@ class ExtDetails extends React.Component {
 
   getCollapShipping() {
     const { shippingClicked } = this.state;
-    const { shipping, shopPolicy, distance } = this.props;
+    const { shipping, shopPolicy, distance, name } = this.props;
     if (shippingClicked) {
       return (
-        <Shipping shipping={shipping} shopPolicy={shopPolicy} distance={distance} />
+        <Shipping shipping={shipping} shopPolicy={shopPolicy} distance={distance} name={name} />
       );
     }
     return <span />;
