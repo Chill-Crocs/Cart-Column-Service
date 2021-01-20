@@ -42,9 +42,15 @@ function createData(id) {
         price: faker.commerce.price(),
         availability: getRandBool(),
       },
+      extDetails: {
+        description: faker.commerce.productDescription(),
+      },
       selectors: getSelectors(),
       shipping: {
-        origin: faker.address.zipCode(),
+        origin: {
+          latitude: 47.839958190918,
+          longitude: -122.206146240234,
+        },
         exchanges: getRandBool(),
       },
       shopPolicy: {

@@ -1,12 +1,70 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Shipping from './Shipping';
 
 class ExtDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      detailsClicked: false,
+      descriptionClicked: false,
+      shippingClicked: false,
     };
+    this.collapseOnClick = this.collapseOnClick.bind(this);
+    this.getCollapDetails = this.getCollapDetails.bind(this);
+    this.getCollapDescrip = this.getCollapDescrip.bind(this);
+    this.getCollapShipping = this.getCollapShipping.bind(this);
+  }
+
+  getCollapDetails() {
+    const { detailsClicked } = this.state;
+    if (detailsClicked) {
+      return (
+        <div className="detailsContent">
+          Handmade Item
+        </div>
+      );
+    }
+    return <span />;
+  }
+
+  getCollapDescrip() {
+    const { descriptionClicked } = this.state;
+    if (descriptionClicked) {
+      return (
+        <div className="descriptionContent">
+          A bunch of description.
+        </div>
+      );
+    }
+    return <span />;
+  }
+
+  getCollapShipping() {
+    const { shippingClicked } = this.state;
+    const { shipping, shopPolicy, distance } = this.props;
+    if (shippingClicked) {
+      return (
+        <Shipping shipping={shipping} shopPolicy={shopPolicy} distance={distance} />
+      );
+    }
+    return <span />;
+  }
+
+  collapseOnClick(e) {
+    if (e.target.className === 'detailsCollapsible') {
+      let { detailsClicked } = this.state;
+      detailsClicked = !detailsClicked;
+      this.setState({ detailsClicked });
+    } else if (e.target.className === 'descriptionCollapsible') {
+      let { descriptionClicked } = this.state;
+      descriptionClicked = !descriptionClicked;
+      this.setState({ descriptionClicked });
+    } else {
+      let { shippingClicked } = this.state;
+      shippingClicked = !shippingClicked;
+      this.setState({ shippingClicked });
+    }
   }
 
   render() {
@@ -14,20 +72,20 @@ class ExtDetails extends React.Component {
     const { sales, availability } = extDetails;
     function getFirstRandDescription() {
       if (!availability) {
-        if (Math.random() > 0.5) {
-          return (
-            {
-              bold: 'Rare find',
-              rest: 'there\'s only 1 of these in stock and 1 other person has this in their cart right now.',
-            }
-          );
-        }
+        // if (Math.random() > 0.5) {
         return (
           {
-            bold: 'Almost gone',
-            rest: 'there\'s only left',
+            bold: 'Rare find',
+            rest: 'there\'s only 1 of these in stock and 1 other person has this in their cart right now.',
           }
         );
+        // }
+      //   return (
+      //     {
+      //       bold: 'Almost gone',
+      //       rest: 'there\'s only left',
+      //     }
+      //   );
       }
       return (
         {
@@ -116,10 +174,10 @@ class ExtDetails extends React.Component {
       <div className="extDetails">
         <div className="extDetails-buttons">
           <div className="buyButton">
-            <button type="button" style={{ cursor: 'pointer' }}> Buy it now </button>
+            <button type="button"> Buy it now </button>
           </div>
           <div className="cartButton">
-            <button type="button" style={{ cursor: 'pointer' }}> Add to cart </button>
+            <button type="button"> Add to cart </button>
           </div>
         </div>
         <div>
@@ -152,10 +210,18 @@ class ExtDetails extends React.Component {
               Enjoy free shipping to the US when you spend $35+ at this shop.
             </span>
           </span>
-          <button type="button" className="collapsible">Open Collapsible</button>
-          <div className="content">
-            <p>Lorem ipsum...</p>
-          </div>
+          <button type="button" className="detailsCollapsible" onClick={this.collapseOnClick}>
+            Details
+          </button>
+          {this.getCollapDetails()}
+          <button type="button" className="descriptionCollapsible" onClick={this.collapseOnClick}>
+            Description
+          </button>
+          {this.getCollapDescrip()}
+          <button type="button" className="shippingCollapsible" onClick={this.collapseOnClick}>
+            Shipping and Return Policies
+          </button>
+          {this.getCollapShipping()}
         </div>
       </div>
     );
@@ -169,6 +235,19 @@ ExtDetails.propTypes = {
     sales: PropTypes.number,
     availability: PropTypes.bool,
   }),
+  shipping: PropTypes.shape({
+    origin: PropTypes.shape({
+      latitude: PropTypes.string,
+      longitude: PropTypes.string,
+    }),
+    exchanges: PropTypes.bool,
+  }),
+  shopPolicy: PropTypes.shape({
+    lastUpdated: PropTypes.string,
+    returns: PropTypes.bool,
+    noReturnTypes: PropTypes.arrayOf(PropTypes.string),
+  }),
+  distance: PropTypes.number,
 };
 
 ExtDetails.defaultProps = {
@@ -176,4 +255,17 @@ ExtDetails.defaultProps = {
     sales: -1,
     availability: false,
   },
+  shipping: {
+    origin: {
+      latitude: '47.839958190918',
+      longitude: '-122.206146240234',
+    },
+    exchanges: false,
+  },
+  shopPolicy: {
+    lastUpdated: '',
+    returns: false,
+    noReturnTypes: [],
+  },
+  distance: -1,
 };
