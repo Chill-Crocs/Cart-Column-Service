@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.86% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/21</span>
+                <span class='fraction'>12/24</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">57.14% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/6</span>
+                <span class='fraction'>4/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.86% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/21</span>
+                <span class='fraction'>12/24</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -161,7 +161,13 @@
 <a name='L102'></a><a href='#L102'>102</a>
 <a name='L103'></a><a href='#L103'>103</a>
 <a name='L104'></a><a href='#L104'>104</a>
-<a name='L105'></a><a href='#L105'>105</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -210,8 +216,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -242,9 +256,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -290,6 +302,9 @@ class App extends React.Component {
         availability: false,
       },
       selectors: [],
+      extDetails: {
+        description: '',
+      },
       shipping: {
         origin: {
           latitude: '47.839958190918',
@@ -310,16 +325,21 @@ class App extends React.Component {
       userZip: '98105',
       distance: 0,
     };
+    this.getData = this.getData.bind(this);
   }
 &nbsp;
   componentDidMount() {
+    this.getData();
+  }
+&nbsp;
+  getData() {
     const randNum = Math.round(Math.random() * 99);
     const { userZip } = this.state;
     axios.get(`/api/item/${randNum}`)
     // axios.get('/api/item/0')
       .then(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; {
         const {
-          rating, info, selectors, shipping, shopPolicy, seller,
+          rating, info, selectors, shipping, extDetails, shopPolicy, seller,
         } = <span class="cstat-no" title="statement not covered" >item.data;</span>
         const { latitude, longitude } = <span class="cstat-no" title="statement not covered" >shipping.origin;</span>
         const lat0 = <span class="cstat-no" title="statement not covered" >latitude;</span>
@@ -334,7 +354,7 @@ class App extends React.Component {
                 const distanceResults = <span class="cstat-no" title="statement not covered" >distanceData.data.resourceSets[0].resources[0];</span>
                 const distance = <span class="cstat-no" title="statement not covered" >distanceResults.results[0].travelDuration;</span>
 <span class="cstat-no" title="statement not covered" >                this.setState({</span>
-                  rating, info, selectors, shipping, shopPolicy, seller, distance,
+                  rating, info, selectors, shipping, extDetails, shopPolicy, seller, distance,
                 });
               });
           });
@@ -343,12 +363,10 @@ class App extends React.Component {
 &nbsp;
   render() {
     const {
-      rating, info, selectors, shipping, shopPolicy, seller, distance,
+      rating, info, selectors, shipping, extDetails, shopPolicy, seller, distance,
     } = this.state;
-    const extDetails = {
-      sales: rating.sales,
-      availability: info.availability,
-    };
+    extDetails.sales = rating.sales;
+    extDetails.availability = info.availability;
     const { name } = rating;
     return (
       &lt;div className="croxy-cart-col"&gt;
@@ -376,7 +394,7 @@ export default App;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Jan 20 2021 14:57:24 GMT-0800 (Pacific Standard Time)
+                at Thu Jan 21 2021 14:43:57 GMT-0800 (Pacific Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

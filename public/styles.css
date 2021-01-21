@@ -22,26 +22,28 @@
   border-width: 1px;
   border-top: none;
   border-right: none;
+  border-bottom: none;
 }
 
 #cart {
   grid-column: 2;
-  grid-row: 2/17;
+  grid-row: 2/19;
   border: solid;
   border-color: grey;
   border-width: 1px;
   border-top: none;
-  /* border-left: none; */
+  border-left: none;
   border-right: none;
 }
 
 #reviews {
   grid-column: 1;
-  grid-row: 8/17;
+  grid-row: 8/19;
   border: solid;
   border-color: grey;
   border-width: 1px;
   border-top: none;
+  border-right: none;
 }
 
 /******************************** MAIN GRID END ************************************/
@@ -316,7 +318,7 @@ svg {
   font-family: 'Helvetica', sans-serif;
   letter-spacing: .3px;
   font-weight: 200;
-  line-height: 28px;
+  line-height: 23px;
 }
 
 .descriptionButton {
@@ -457,7 +459,7 @@ svg {
 .icon-connector-2 {
   border-bottom: 2px solid rgba(34, 34, 34, 0.15);
   height: 11px;
-  width: 45px;
+  width: 46px;
   display: block;
   margin-left: 80px;
   position: absolute;
@@ -474,7 +476,7 @@ svg {
 
 .icon-connector-4 {
   border-bottom: 2px solid rgba(34, 34, 34, 0.15);
-  height: 10.5px;
+  height: 11px;
   width: 7.5%;
   display: block;
   position: absolute;
@@ -654,6 +656,11 @@ svg {
   color: #222222;
   padding: 12px;
   width: 262px;
+  font-size: 12px;
+  font-family: 'Helvetica', sans-serif;
+  letter-spacing: .3px;
+  font-weight: 200;
+  z-index: 300;
 }
 
 .tooltip-show-0 {

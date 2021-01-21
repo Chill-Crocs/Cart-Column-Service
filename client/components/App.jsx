@@ -46,9 +46,14 @@ class App extends React.Component {
       userZip: '98105',
       distance: 0,
     };
+    this.getData = this.getData.bind(this);
   }
 
   componentDidMount() {
+    this.getData();
+  }
+
+  getData() {
     const randNum = Math.round(Math.random() * 99);
     const { userZip } = this.state;
     axios.get(`/api/item/${randNum}`)

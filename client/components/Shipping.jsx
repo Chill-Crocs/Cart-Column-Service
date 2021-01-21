@@ -133,7 +133,10 @@ class Shipping extends React.Component {
             <span className={toolTip1}>
               <span className="tooltip-container grid-3">
                 <span className="tooltip-content">
-                  After you place your order, AlphaCreativeStudio
+                  After you place your order,
+                  <span> </span>
+                  {name}
+                  <span> </span>
                   will take 1 business day to prepare it for shipment.
                 </span>
               </span>
@@ -165,8 +168,9 @@ class Shipping extends React.Component {
             <span className={toolTip2}>
               <span className="tooltip-container grid-1">
                 <span className="tooltip-content">
-                  After you place your order, AlphaCreativeStudio
-                  will take 1 business day to prepare it for shipment.
+                  {name}
+                  <span> </span>
+                  puts your order in the mail.
                 </span>
               </span>
             </span>
@@ -196,7 +200,9 @@ class Shipping extends React.Component {
             <span className={toolTip3}>
               <span className="tooltip-container grid-2">
                 <span className="tooltip-content">
-                  Number 3
+                  Estimated to arrive at your doorstep
+                  <span> </span>
+                  {`${moment().add(Math.round((distance / 1440) + 3), 'd').format('MMM D')} - ${moment().add(9, 'd').format('MMM D')}`}
                 </span>
               </span>
             </span>
