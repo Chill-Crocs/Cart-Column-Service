@@ -34,7 +34,7 @@ class ShippingPolicies extends React.Component {
 
   getExchanges() {
     const { shopPolicy } = this.props;
-    const { returns, noReturnTypes } = shopPolicy;
+    const { returns } = shopPolicy;
     if (returns) {
       return (
         <div>
@@ -52,18 +52,18 @@ class ShippingPolicies extends React.Component {
           </span>
           <br />
           <br />
-          <span className="sub-title">I don't accept returns</span>
+          <span className="sub-title">I don&apos;t accept returns</span>
           <br />
           <span className="small-grey-text">
             But please contact me if you have any problems with your order.
           </span>
           <br />
           <br />
-          <span className="sub-title">The following items can't be returned or exchanged</span>
+          <span className="sub-title">The following items can&apos;t be returned or exchanged</span>
           <br />
           <span className="small-grey-text">
             Because of the nature of these items, unless they arrive damaged or defective,
-            I can't accept returns for:
+            I can&apos;t accept returns for:
             <br />
             {this.getReturnTypes()}
           </span>
@@ -77,10 +77,16 @@ class ShippingPolicies extends React.Component {
         </div>
       );
     }
+    return <span />;
   }
 
   render() {
-    const { shopPolicy, name, showModal, modalClass } = this.props;
+    const {
+      shopPolicy,
+      name,
+      showModal,
+      modalClass,
+    } = this.props;
     const { lastUpdated } = shopPolicy;
     return (
       <div id="policy-modal">
@@ -122,5 +128,27 @@ class ShippingPolicies extends React.Component {
     );
   }
 }
+
+ShippingPolicies.propTypes = {
+  shopPolicy: PropTypes.shape({
+    returns: PropTypes.bool,
+    noReturnTypes: PropTypes.arrayOf(PropTypes.string),
+    lastUpdated: PropTypes.string,
+  }),
+  name: PropTypes.string,
+  showModal: PropTypes.func,
+  modalClass: PropTypes.string,
+};
+
+ShippingPolicies.defaultProps = {
+  shopPolicy: {
+    returns: false,
+    noReturnTypes: [],
+    lastUpdated: '',
+  },
+  name: '',
+  showModal: PropTypes.func,
+  modalClass: '',
+};
 
 export default ShippingPolicies;

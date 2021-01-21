@@ -64,9 +64,14 @@ class Shipping extends React.Component {
   }
 
   render() {
-    const { shipping, distance, shopPolicy, name } = this.props;
-    const { exchanges } = shipping;
-    const { modalClass, toolTip0, toolTip1, toolTip2, toolTip3 } = this.state;
+    const { distance, shopPolicy, name } = this.props;
+    const {
+      modalClass,
+      toolTip0,
+      toolTip1,
+      toolTip2,
+      toolTip3,
+    } = this.state;
     function getShippedDate() {
       const days = Math.round((distance / 1440) + 3);
       return `${moment().add(days, 'd').format('MMM D')} - ${moment().add(9, 'd').format('D')}`;
@@ -89,7 +94,7 @@ class Shipping extends React.Component {
           <span className={toolTip0}>
             <span className="tooltip-container">
               <span className="tooltip-content">
-                This is an estimate based on the purchase date, the seller's location,
+                This is an estimate based on the purchase date, the seller&apos;s location,
                 <span> </span>
                 and processing time, and the shipping destination and carrier.
                 Other factors—such as shipping carrier delays or placing an order on
@@ -143,7 +148,7 @@ class Shipping extends React.Component {
             onBlur={(e) => console.log(e, 'mouseout')}
           >
             <span className="icon-connector-2 grid-1" />
-            <div id="grid-0-1-content">
+            <div id="grid-0-1-content" className="grid-1">
               <span className="etsy-icon grid-1">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 13 1.4 1.4" aria-hidden="true" focusable="false" className="grid-1">
                   <path d="M21.868,11.5l-4-7A1,1,0,0,0,17,4H5A1,1,0,0,0,4,5V6H2A1,1,0,1,0,2,8H6a1,1,0,0,1,0,2H3a1,1,0,0,0,0,2H5a1,1,0,1,1,0,2H4v3a1,1,0,0,0,1,1H6.05a2.5,2.5,0,0,0,4.9,0h4.1a2.5,2.5,0,0,0,4.9,0H21a1,1,0,0,0,1-1V12A1,1,0,0,0,21.868,11.5ZM8.5,19A1.5,1.5,0,1,1,10,17.5,1.5,1.5,0,0,1,8.5,19Zm5.488-8V6h1.725l2.845,5h-4.57ZM17.5,19A1.5,1.5,0,1,1,19,17.5,1.5,1.5,0,0,1,17.5,19Z" />
@@ -175,7 +180,7 @@ class Shipping extends React.Component {
             onBlur={(e) => console.log(e, 'mouseout')}
           >
             <span className="icon-connector-4 grid-2" />
-            <div id="grid-0-2-content">
+            <div id="grid-0-2-content" className="grid-2">
               <span className="etsy-icon grid-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 15 1.4 1.4" aria-hidden="true" focusable="false" className="grid-2">
                   <path d="M21,9.25A1.25,1.25,0,0,0,19.75,8H12.41l4.29-4.29a1,1,0,0,0-1.41-1.41L12,5.59,10.71,4.29A1,1,0,0,0,9.29,5.71L11.59,8H4.25A1.25,1.25,0,0,0,3,9.25V15H4v5.75A1.25,1.25,0,0,0,5.25,22h13.5A1.25,1.25,0,0,0,20,20.75V15h1ZM19,10v3H13V10ZM5,10h6v3H5ZM6,20V15h5v5Zm12,0H13V15h5Z" />
@@ -225,6 +230,7 @@ Shipping.propTypes = {
     noReturnTypes: PropTypes.arrayOf(PropTypes.string),
   }),
   distance: PropTypes.number,
+  name: PropTypes.string,
 };
 
 Shipping.defaultProps = {
@@ -241,6 +247,7 @@ Shipping.defaultProps = {
     noReturnTypes: [],
   },
   distance: -1,
+  name: '',
 };
 
 export default Shipping;

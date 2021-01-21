@@ -304,6 +304,65 @@ svg {
   background-color: #f1f1f1;
 }
 
+.detailsBox {
+  font-family: 'Helvetica', sans-serif;
+  font-weight: 100;
+}
+
+.descriptionContainer {
+  display: block;
+  position: relative;
+  font-size: 16px;
+  font-family: 'Helvetica', sans-serif;
+  letter-spacing: .3px;
+  font-weight: 200;
+  line-height: 28px;
+}
+
+.descriptionButton {
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  padding: 13px 11px;
+  margin: auto;
+  background-color: rgb(255, 255, 255);
+  border: 0 solid white;
+  outline-style: none;
+  cursor: pointer;
+  margin-top: 11px;
+  border-radius: 50px;
+  display: block;
+  position: static;
+  outline: none;
+}
+
+.descriptionButton:hover {
+  background-color: rgba(204, 204, 204, 0.226);
+  border: rgba(204, 204, 204, 0.226);
+}
+
+.shaderOff:after {
+  display: none;
+}
+
+.shaderOn:after {
+  opacity: 1;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  transition: opacity 200ms ease-in;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
+  pointer-events: none;
+}
+
+.contentHide {
+  max-height: 200px;
+  overflow: hidden;
+};
+
 /******************************** EXTDETAILS STYLE END ************************************/
 
 /******************************** SHIPPING STYLE START ************************************/
@@ -340,7 +399,7 @@ svg {
   grid-column: 1;
   grid-row: 1;
   display: grid;
-  z-index: 400;
+  cursor: help;
 }
 
 #shipped-grid-0-1{
@@ -349,7 +408,7 @@ svg {
   display: grid;
   align-items: center;
   justify-items: center;
-  z-index: 400;
+  cursor: help;
 }
 
 #shipped-grid-0-2{
@@ -358,7 +417,7 @@ svg {
   display: grid;
   align-items: right;
   justify-items: right;
-  z-index: 400;
+  cursor: help;
 }
 
 
@@ -586,7 +645,6 @@ svg {
 
 .tooltip-show-0, .tooltip-show-1, .tooltip-show-2, .tooltip-show-3 {
   position: absolute;
-  z-index: 400;
   margin-top: 84px;
   margin-left: -114px;
   border: 1px solid rgba(34, 34, 34, 0.15);
@@ -596,7 +654,6 @@ svg {
   color: #222222;
   padding: 12px;
   width: 262px;
-  z-index: 600;
 }
 
 .tooltip-show-0 {
@@ -645,3 +702,35 @@ svg {
 }
 
 /******************************** SHIPPING STYLE END ************************************/
+
+/******************************** SVG STYLING START ************************************/
+
+#lp-collage-shipping--truck-body-container {
+  fill: #D7E6F5;
+}
+
+#lp-collage-shipping--wheel-right, #lp-collage-shipping--wheel-left {
+  fill: #4D6BC6;
+}
+
+#sand {
+  fill: #9560B8;
+}
+
+#empty {
+  fill: #E6E1F0;
+}
+
+#cart-basket {
+  fill: #D7E6F5
+}
+
+#cart-star {
+  fill: #4D6BC6;
+}
+
+#cart-fill {
+  fill: none;
+}
+
+/******************************** SVG STYLING END ************************************/

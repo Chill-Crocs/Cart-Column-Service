@@ -29,6 +29,17 @@ function createData(id) {
     }
     return arr;
   }
+  function getDescription() {
+    let str = '';
+    for (let i = 0; i < 3; i += 1) {
+      if (i < 2) {
+        str += `${faker.commerce.productDescription()}\n`;
+      } else {
+        str += faker.commerce.productDescription();
+      }
+    }
+    return str;
+  }
   return (
     {
       _id: id,
@@ -43,7 +54,7 @@ function createData(id) {
         availability: getRandBool(),
       },
       extDetails: {
-        description: faker.commerce.productDescription(),
+        description: getDescription(),
       },
       selectors: getSelectors(),
       shipping: {

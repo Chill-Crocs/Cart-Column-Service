@@ -23,6 +23,9 @@ class App extends React.Component {
         availability: false,
       },
       selectors: [],
+      extDetails: {
+        description: '',
+      },
       shipping: {
         origin: {
           latitude: '47.839958190918',
@@ -52,7 +55,7 @@ class App extends React.Component {
     // axios.get('/api/item/0')
       .then((item) => {
         const {
-          rating, info, selectors, shipping, shopPolicy, seller,
+          rating, info, selectors, shipping, extDetails, shopPolicy, seller,
         } = item.data;
         const { latitude, longitude } = shipping.origin;
         const lat0 = latitude;
@@ -67,7 +70,7 @@ class App extends React.Component {
                 const distanceResults = distanceData.data.resourceSets[0].resources[0];
                 const distance = distanceResults.results[0].travelDuration;
                 this.setState({
-                  rating, info, selectors, shipping, shopPolicy, seller, distance,
+                  rating, info, selectors, shipping, extDetails, shopPolicy, seller, distance,
                 });
               });
           });
@@ -76,12 +79,10 @@ class App extends React.Component {
 
   render() {
     const {
-      rating, info, selectors, shipping, shopPolicy, seller, distance,
+      rating, info, selectors, shipping, extDetails, shopPolicy, seller, distance,
     } = this.state;
-    const extDetails = {
-      sales: rating.sales,
-      availability: info.availability,
-    };
+    extDetails.sales = rating.sales;
+    extDetails.availability = info.availability;
     const { name } = rating;
     return (
       <div className="croxy-cart-col">
