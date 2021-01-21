@@ -9,8 +9,14 @@ class Shipping extends React.Component {
     super(props);
     this.state = {
       modalClass: 'hide',
+      toolTip0: 'hide',
+      toolTip1: 'hide',
+      toolTip2: 'hide',
+      toolTip3: 'hide',
     };
     this.showModal = this.showModal.bind(this);
+    this.toolTipHoverOver = this.toolTipHoverOver.bind(this);
+    this.toolTipHoverOut = this.toolTipHoverOut.bind(this);
   }
 
   showModal() {
@@ -23,10 +29,46 @@ class Shipping extends React.Component {
     this.setState({ modalClass });
   }
 
+  toolTipHoverOver(e) {
+    const whichTip = e.target.className;
+    console.log(e.target.className);
+    if (whichTip === 'dotted-shipping arrival') {
+      const toolTip0 = 'tooltip-show-0';
+      this.setState({ toolTip0 });
+    } else if (whichTip === 'shipped-grid-0-0') {
+      const toolTip1 = 'tooltip-show-1';
+      this.setState({ toolTip1 });
+    } else if (whichTip === 'shipped-grid-0-1') {
+      const toolTip2 = 'tooltip-show-2';
+      this.setState({ toolTip2 });
+    } else if (whichTip === 'shipped-grid-0-2') {
+      const toolTip3 = 'tooltip-show-3';
+      this.setState({ toolTip3 });
+    }
+  }
+
+  toolTipHoverOut(e) {
+    const whichTip = e.target.className;
+    console.log(e.target.className);
+    if (whichTip === 'dotted-shipping arrival') {
+      const toolTip0 = 'hide';
+      this.setState({ toolTip0 });
+    } else if (whichTip === 'shipped-grid-0-0') {
+      const toolTip1 = 'hide';
+      this.setState({ toolTip1 });
+    } else if (whichTip === 'shipped-grid-0-1') {
+      const toolTip2 = 'hide';
+      this.setState({ toolTip2 });
+    } else {
+      const toolTip3 = 'hide';
+      this.setState({ toolTip3 });
+    }
+  }
+
   render() {
     const { shipping, distance, shopPolicy, name } = this.props;
     const { exchanges } = shipping;
-    const { modalClass } = this.state;
+    const { modalClass, toolTip0, toolTip1, toolTip2, toolTip3 } = this.state;
     function getShippedDate() {
       const days = Math.round((distance / 1440) + 3);
       return `${moment().add(days, 'd').format('MMM D')} - ${moment().add(9, 'd').format('D')}`;
@@ -37,15 +79,40 @@ class Shipping extends React.Component {
     return (
       <div id="shipping-collapse">
         <div>
-          <div className="dotted-shipping arrival">
+          <div
+            className="dotted-shipping arrival"
+            onMouseOver={this.toolTipHoverOver}
+            onFocus={(e) => console.log(e, 'mousein')}
+            onMouseOut={this.toolTipHoverOut}
+            onBlur={(e) => console.log(e, 'mouseout')}
+          >
             Estimated arrival
           </div>
+          <span className={toolTip0}>
+            <span className="tooltip-container">
+              <span className="tooltip-content">
+                This is an estimate based on the purchase date, the seller's location,
+                <span> </span>
+                and processing time, and the shipping destination and carrier.
+                Other factors—such as shipping carrier delays or placing an order on
+                <span> </span>
+                weekend/holiday—may push the arrival of your item beyond this date.
+              </span>
+            </span>
+          </span>
           <div id="shippedDate">
             {shippedDate}
           </div>
         </div>
         <div id="shipped-grid">
-          <div id="shipped-grid-0-0">
+          <div
+            id="shipped-grid-0-0"
+            className="shipped-grid-0-0"
+            onMouseOver={this.toolTipHoverOver}
+            onFocus={(e) => console.log(e, 'mousein')}
+            onMouseOut={this.toolTipHoverOut}
+            onBlur={(e) => console.log(e, 'mouseout')}
+          >
             <div id="grid-0-0-content">
               <span className="etsy-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 10 1.1 1.1" fill="none" aria-hidden="true" focusable="false">
@@ -60,8 +127,23 @@ class Shipping extends React.Component {
             <span className="dotted-shipping">
               Order placed
             </span>
+            <span className={toolTip1}>
+              <span className="tooltip-container">
+                <span className="tooltip-content">
+                  After you place your order, AlphaCreativeStudio
+                  will take 1 business day to prepare it for shipment.
+                </span>
+              </span>
+            </span>
           </div>
-          <div id="shipped-grid-0-1">
+          <div
+            id="shipped-grid-0-1"
+            className="shipped-grid-0-1"
+            onMouseOver={this.toolTipHoverOver}
+            onFocus={(e) => console.log(e, 'mousein')}
+            onMouseOut={this.toolTipHoverOut}
+            onBlur={(e) => console.log(e, 'mouseout')}
+          >
             <span className="icon-connector-2" />
             <div id="grid-0-1-content">
               <span className="etsy-icon">
@@ -77,8 +159,23 @@ class Shipping extends React.Component {
             <span className="dotted-shipping">
               Order ships
             </span>
+            <span className={toolTip2}>
+              <span className="tooltip-container">
+                <span className="tooltip-content">
+                  After you place your order, AlphaCreativeStudio
+                  will take 1 business day to prepare it for shipment.
+                </span>
+              </span>
+            </span>
           </div>
-          <div id="shipped-grid-0-2">
+          <div
+            id="shipped-grid-0-2"
+            className="shipped-grid-0-2"
+            onMouseOver={this.toolTipHoverOver}
+            onFocus={(e) => console.log(e, 'mousein')}
+            onMouseOut={this.toolTipHoverOut}
+            onBlur={(e) => console.log(e, 'mouseout')}
+          >
             <span className="icon-connector-4" />
             <div id="grid-0-2-content">
               <span className="etsy-icon">
@@ -92,6 +189,13 @@ class Shipping extends React.Component {
             </div>
             <span className="dotted-shipping">
               Delivered
+            </span>
+            <span className={toolTip3}>
+              <span className="tooltip-container">
+                <span className="tooltip-content">
+                  Number 3
+                </span>
+              </span>
             </span>
           </div>
         </div>

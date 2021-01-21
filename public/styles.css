@@ -320,6 +320,7 @@ svg {
   text-decoration-line: underline;
   text-decoration-style: dashed;
   text-underline-position: under;
+  cursor: help;
 }
 
 .arrival {
@@ -339,6 +340,7 @@ svg {
   grid-column: 1;
   grid-row: 1;
   display: grid;
+  z-index: 1000;
 }
 
 #shipped-grid-0-1{
@@ -347,6 +349,7 @@ svg {
   display: grid;
   align-items: center;
   justify-items: center;
+  z-index: 400;
 }
 
 #shipped-grid-0-2{
@@ -355,6 +358,7 @@ svg {
   display: grid;
   align-items: right;
   justify-items: right;
+  z-index: 400;
 }
 
 
@@ -537,16 +541,6 @@ svg {
 
 .hide {
   display: none;
-  /* overflow-y: auto;
-  overflow-x: hidden; */
-  overflow: scroll;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 80;
-  background: rgba(34, 34, 34, 0.65);
 }
 
 .show {
@@ -584,6 +578,70 @@ svg {
 .small-grey-text {
   font-size: 11px;
   color: #595959
+}
+
+.modal-content li {
+  margin-left: -26px;
+}
+
+.tooltip-show-0, .tooltip-show-1, .tooltip-show-2, .tooltip-show-3 {
+  position: absolute;
+  z-index: 400;
+  margin-top: 84px;
+  margin-left: -114px;
+  border: 1px solid rgba(34, 34, 34, 0.15);
+  border-radius: 12px;
+  box-shadow: 0 6px 36px rgba(34, 34, 34, 0.325);
+  background: #FFFFFF;
+  color: #222222;
+  padding: 12px;
+  width: 262px;
+  z-index: 600;
+}
+
+.tooltip-show-0 {
+  margin-top: -44px;
+  margin-left: 104px;
+}
+
+.tooltip-show-2 {
+  margin-top: 84px;
+  margin-left: -75px;
+}
+
+.tooltip-show-3 {
+  margin-left: -118px;
+}
+
+.tooltip-container {
+  background-color: white;
+}
+
+.tooltip-show-0:before, .tooltip-show-1:before, .tooltip-show-2:before, .tooltip-show-3:before {
+  content:"";
+  position: absolute;
+  height: 0px;
+  width: 0px;
+  top: -16px;
+  left: 128px;
+  border-width: 8px;
+  border-color: transparent white transparent transparent;
+  border-style: solid;
+  transform: rotate(90deg);
+}
+
+.tooltip-show-0:before {
+  top: 19px;
+  left: -16px;
+  transform: rotate(0deg);
+}
+
+.tooltip-show-2:before {
+  left: 129px;
+}
+
+.tooltip-show-3:before {
+  left: 210px;
 }
 
 /******************************** SHIPPING STYLE END ************************************/
