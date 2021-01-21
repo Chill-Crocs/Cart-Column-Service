@@ -340,7 +340,7 @@ svg {
   grid-column: 1;
   grid-row: 1;
   display: grid;
-  z-index: 1000;
+  z-index: 400;
 }
 
 #shipped-grid-0-1{
