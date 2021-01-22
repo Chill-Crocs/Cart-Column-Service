@@ -242,7 +242,7 @@ class ExtDetails extends React.Component {
               <g data-animator-group="true" data-animator-type="0">
                 <g data-animator-group="true" data-animator-type="1">
                   <path d="M38.6 15c-0.6-0.3-1.1-0.6-1.7-1H28v14H4v7c0.4 0.4 0.6 0.6 1 1h2.4c0.8-2.3 3-4 5.6-4s4.8 1.7 5.6 4h10.7c0.8-2.3 3-4 5.6-4s4.8 1.7 5.6 4H43c0.4-0.4 0.6-0.6 1-1V24L38.6 15zM32 24v-6h4.9l3.6 6H32z" />
-                  <path id="lp-collage-shipping--truck-body-container" d="M28 10c-0.8-0.8-1.2-1.2-2-2H6c-0.8 0.8-1.2 1.2-2 2v18h24V10z" />
+                  <path id="truck-container" style={{ fill: '#D7E6F5' }} d="M28 10c-0.8-0.8-1.2-1.2-2-2H6c-0.8 0.8-1.2 1.2-2 2v18h24V10z" />
                 </g>
               </g>
             </svg>

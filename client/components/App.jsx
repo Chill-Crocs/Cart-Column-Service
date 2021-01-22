@@ -101,7 +101,7 @@ class App extends React.Component {
           shopPolicy={shopPolicy}
           name={name}
         />
-        <Seller seller={seller} />
+        <Seller seller={seller} shopName={name} />
       </div>
     );
   }
