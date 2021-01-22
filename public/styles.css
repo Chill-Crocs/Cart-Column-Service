@@ -487,12 +487,13 @@ svg {
 .shippingCostCollapsible {
   font-size: 12px;
   font-weight: bold;
-  width: 34%;
+  width: fit-content;
   text-align: left;
   padding: 13px 11px;
   margin-bottom: 1px;
   margin-left: -11px;
-  background-position: 115px 9px;
+  background-position: right;
+  padding-right: 22px;
 }
 
 #zipcode-estimator {
@@ -751,10 +752,6 @@ svg {
 
 /******************************** SVG STYLING START ************************************/
 
-#truck-container {
-  fill: #D7E6F5;
-}
-
 #lp-collage-shipping--wheel-right, #lp-collage-shipping--wheel-left {
   fill: #4D6BC6;
 }
@@ -965,6 +962,10 @@ svg {
   overflow: auto;
 }
 
+.messagesContainer::-webkit-scrollbar {
+  display: none;
+}
+
 .messageBlurb {
   width: fit-content;
   max-width: 66%;
@@ -974,7 +975,6 @@ svg {
   line-height: 24px;
   padding: 12px;
   margin-right: 8px;
-  margin-bottom: 4px;
 }
 
 .messageContent {
@@ -987,6 +987,7 @@ svg {
   display: flex;
   justify-content: flex-end;
   flex-wrap: wrap;
+  margin-top: 6px;
 }
 
 .message {
@@ -1009,3 +1010,31 @@ svg {
 }
 
 /******************************** SELLER STYLING END ************************************/
+
+
+/******************************** PRIORITY STYLING END ************************************/
+.cost-info-text {
+  font-size: 12px;
+  font-family: 'Helvetica', sans-serif;
+  letter-spacing: .3px;
+  font-weight: 200;
+  color: #595959;
+  margin-left: 3px;
+  margin-top: 30px;
+}
+
+.cost-info-price {
+  font-family: 'Helvetica', sans-serif;
+  letter-spacing: .3px;
+  font-weight: 200;
+  font-size: 22px;
+  margin-left: 3px;
+  margin-top: 6px;
+  margin-bottom: 14px;
+}
+
+#truck-container {
+  fill: #D7E6F5;
+
+  /******************************** PRIORITY STYLING END ************************************/
+}

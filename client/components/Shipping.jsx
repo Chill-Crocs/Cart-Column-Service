@@ -64,7 +64,13 @@ class Shipping extends React.Component {
   }
 
   render() {
-    const { distance, shopPolicy, name } = this.props;
+    const {
+      distance,
+      shopPolicy,
+      name,
+      price,
+      changeZip,
+    } = this.props;
     const {
       modalClass,
       toolTip0,
@@ -209,7 +215,7 @@ class Shipping extends React.Component {
           </div>
         </div>
         <div>
-          <ShippingCost />
+          <ShippingCost price={price} changeZip={changeZip} />
           <ShippingPolicies
             shopPolicy={shopPolicy}
             name={name}
@@ -237,6 +243,8 @@ Shipping.propTypes = {
   }),
   distance: PropTypes.number,
   name: PropTypes.string,
+  changeZip: PropTypes.func,
+  price: PropTypes.string,
 };
 
 Shipping.defaultProps = {
@@ -254,6 +262,8 @@ Shipping.defaultProps = {
   },
   distance: -1,
   name: '',
+  changeZip: PropTypes.func,
+  price: '',
 };
 
 export default Shipping;

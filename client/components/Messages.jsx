@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment';
+import PropTypes from 'prop-types';
 
 class Messages extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class Messages extends React.Component {
   }
 
   render() {
-    const { messageBox, time, name } = this.props;
+    const { messageBox, name } = this.props;
     let i = 0;
     function mapFunc(value, index) {
       i += 1;
@@ -84,5 +84,20 @@ class Messages extends React.Component {
     );
   }
 }
+
+Messages.propTypes = {
+  messageBox: PropTypes.arrayOf(
+    PropTypes.shape({
+      message: PropTypes.string,
+      time: PropTypes.string,
+    }),
+  ),
+  name: PropTypes.string,
+};
+
+Messages.defaultProps = {
+  messageBox: [],
+  name: '',
+};
 
 export default Messages;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import Messages from './Messages';
 
@@ -63,8 +64,13 @@ class Seller extends React.Component {
 
   render() {
     const { seller, shopName } = this.props;
-    const { role, imageURL, name } = seller;
-    const { policyCollap, messageModal, message, messageBox } = this.state;
+    const { name } = seller;
+    const {
+      policyCollap,
+      messageModal,
+      message,
+      messageBox,
+    } = this.state;
     return (
       <div>
         <button type="button" className="sellerCollapsible" onClick={this.collapseOnClick}>
@@ -119,7 +125,7 @@ class Seller extends React.Component {
             </div>
           </div>
           <div className="messageModal-subtitle">
-            <Messages messageBox={messageBox} time={moment()} name={name} />
+            <Messages messageBox={messageBox} name={name} />
           </div>
           <div className="messageModal-input">
             <div className="input-content">
@@ -142,5 +148,19 @@ class Seller extends React.Component {
     );
   }
 }
+
+Seller.propTypes = {
+  seller: PropTypes.shape({
+    name: PropTypes.string,
+  }),
+  shopName: PropTypes.string,
+};
+
+Seller.defaultProps = {
+  seller: {
+    name: '',
+  },
+  shopName: '',
+};
 
 export default Seller;
