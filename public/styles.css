@@ -708,6 +708,43 @@ svg {
   left: 210px;
 }
 
+.payment-content {
+  margin-left: 6px;
+  font-weight: 300;
+  font-size: 13px;
+}
+
+.payment-content img {
+  width: 100%;
+}
+
+.policyContainer {
+  display: block;
+  position: relative;
+}
+
+.policyShaderOn:after {
+  opacity: 1;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 62px;
+  position: absolute;
+  transition: opacity 200ms ease-in;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
+  pointer-events: none;
+}
+
+.policyShaderOff:after {
+  display: none;
+}
+
+.policyContentHide {
+  max-height: 180px;
+  overflow: hidden;
+};
+
 /******************************** SHIPPING STYLE END ************************************/
 
 /******************************** SVG STYLING START ************************************/
