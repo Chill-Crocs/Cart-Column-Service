@@ -29,6 +29,17 @@ function createData(id) {
     }
     return arr;
   }
+  function getDescription() {
+    let str = '';
+    for (let i = 0; i < 3; i += 1) {
+      if (i < 2) {
+        str += `${faker.commerce.productDescription()}\n`;
+      } else {
+        str += faker.commerce.productDescription();
+      }
+    }
+    return str;
+  }
   return (
     {
       _id: id,
@@ -42,22 +53,15 @@ function createData(id) {
         price: faker.commerce.price(),
         availability: getRandBool(),
       },
-      selectors: getSelectors(),
       extDetails: {
-        details: [
-          {
-            iconUrl: 'Hand',
-            description: faker.commerce.productAdjective(),
-          },
-          {
-            iconUrl: 'Stars',
-            description: `Materials:  + ${faker.commerce.productMaterial()}`,
-          },
-        ],
-        description: faker.commerce.productDescription(),
+        description: getDescription(),
       },
+      selectors: getSelectors(),
       shipping: {
-        origin: faker.address.zipCode(),
+        origin: {
+          latitude: 47.839958190918,
+          longitude: -122.206146240234,
+        },
         exchanges: getRandBool(),
       },
       shopPolicy: {

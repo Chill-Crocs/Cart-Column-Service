@@ -7,8 +7,8 @@ const cartSchema = new mongoose.Schema({
   rating: { name: String, sales: Number, stars: Number },
   info: { tags: [String], price: Number, availability: Boolean },
   selectors: [{ name: String, options: [String] }],
-  extDetails: { details: [{ iconUrl: String, description: String }], description: String },
-  shipping: { origin: String, exchanges: Boolean },
+  extDetails: { description: String },
+  shipping: { origin: { latitude: String, longitude: String }, exchanges: Boolean },
   shopPolicy: { lastUpdated: String, returns: Boolean, noReturnTypes: [String] },
   seller: { name: String, role: String, imageUrl: String },
 });

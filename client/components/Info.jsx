@@ -70,7 +70,7 @@ class Info extends React.Component {
     const priceView = `$${(price / 100).toFixed(2)}`;
     const availabilityView = getAvailable(availability);
     return (
-      <div>
+      <div className="cart-info">
         <div className="tagList">
           {tagsView}
         </div>

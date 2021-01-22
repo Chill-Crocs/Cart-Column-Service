@@ -5,9 +5,8 @@ import Rating from './Rating';
 import Info from './Info';
 import Selector from './Selector';
 import ExtDetails from './ExtDetails';
-import Shipping from './Shipping';
-import ShopPolicy from './ShopPolicy';
 import Seller from './Seller';
+import BING_KEY from '../../keys/BING_API_KEY';
 
 class App extends React.Component {
   constructor() {
@@ -25,11 +24,13 @@ class App extends React.Component {
       },
       selectors: [],
       extDetails: {
-        details: [],
         description: '',
       },
       shipping: {
-        origin: -1,
+        origin: {
+          latitude: '47.839958190918',
+          longitude: '-122.206146240234',
+        },
         exchanges: false,
       },
       shopPolicy: {
@@ -42,35 +43,64 @@ class App extends React.Component {
         role: '',
         imageURL: '',
       },
+      userZip: '98105',
+      distance: 0,
     };
+    this.getData = this.getData.bind(this);
   }
 
   componentDidMount() {
-    const randNum = Math.round(Math.random() * 100);
+    this.getData();
+  }
+
+  getData() {
+    const randNum = Math.round(Math.random() * 99);
+    const { userZip } = this.state;
     axios.get(`/api/item/${randNum}`)
     // axios.get('/api/item/0')
-      .then((result) => {
+      .then((item) => {
         const {
-          rating, info, selectors, extDetails, shipping, shopPolicy, seller,
-        } = result.data;
-        this.setState({
-          rating, info, selectors, extDetails, shipping, shopPolicy, seller,
-        });
+          rating, info, selectors, shipping, extDetails, shopPolicy, seller,
+        } = item.data;
+        const { latitude, longitude } = shipping.origin;
+        const lat0 = latitude;
+        const long0 = longitude;
+        axios.get(`http://dev.virtualearth.net/REST/v1/Locations?countryRegion=US&postalCode=${userZip}&key=${BING_KEY}`)
+          .then((zipData) => {
+            const resources = zipData.data.resourceSets[0].resources[0];
+            const lat1 = resources.geocodePoints[0].coordinates[0];
+            const long1 = resources.geocodePoints[0].coordinates[1];
+            axios.get(`https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=${lat0},${long0}&destinations=${lat1},${long1}&travelMode=driving&key=An73bmmGtDp0dF5-B3ckWPunbeQJrKgrE73hODpN55d7gHhzsD-NOnuOpYi03YmB`)
+              .then((distanceData) => {
+                const distanceResults = distanceData.data.resourceSets[0].resources[0];
+                const distance = distanceResults.results[0].travelDuration;
+                this.setState({
+                  rating, info, selectors, shipping, extDetails, shopPolicy, seller, distance,
+                });
+              });
+          });
       });
   }
 
   render() {
     const {
-      rating, info, selectors, extDetails, shipping, shopPolicy, seller,
+      rating, info, selectors, shipping, extDetails, shopPolicy, seller, distance,
     } = this.state;
+    extDetails.sales = rating.sales;
+    extDetails.availability = info.availability;
+    const { name } = rating;
     return (
-      <div>
+      <div className="croxy-cart-col">
         <Rating rating={rating} />
         <Info info={info} />
         <Selector selectors={selectors} />
-        <ExtDetails extDetails={extDetails} />
-        <Shipping shipping={shipping} />
-        <ShopPolicy shopPolicy={shopPolicy} />
+        <ExtDetails
+          extDetails={extDetails}
+          distance={distance}
+          shipping={shipping}
+          shopPolicy={shopPolicy}
+          name={name}
+        />
         <Seller seller={seller} />
       </div>
     );

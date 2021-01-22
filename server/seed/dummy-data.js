@@ -10,7 +10,7 @@ const data = {
   },
   info: {
     tags: ['Buddha', 'Shoe Charms', 'Shoe Decor', 'Crok Charms', 'Christmas Gifts', 'Birthday Gifts', 'Shoe Plugs', 'Clog Shoe', 'Charms', 'Garden Charms', 'Plants'],
-    price: 3.99,
+    price: 399,
     availability: true,
   },
   selectors: [
@@ -20,20 +20,10 @@ const data = {
     },
     {
       name: 'Quantity',
-      options: [1, 100],
+      options: ['1', '100'],
     },
   ],
   extDetails: {
-    details: [
-      {
-        iconUrl: 'Hand',
-        description: 'Handmade Item',
-      },
-      {
-        iconUrl: 'Stars',
-        description: 'Materials: Pvc',
-      },
-    ],
     description: 'Legal Disclaimer: My items are unbranded and unlicensed products. I do not claim ownership to any character, brand, or person used. Copyrights and/or trademarks used belong to their respective owners. These are inspired designs.',
   },
   shipping: {
