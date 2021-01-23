@@ -6,6 +6,7 @@ jobs:
     working_directory: ~/Cart-Service
     docker:
       - image: circleci/node:fermium
+    environment: $BING_API_KEY
     steps:
       - checkout
       - restore_cache:
