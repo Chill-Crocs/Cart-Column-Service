@@ -40,11 +40,17 @@ describe('Shipping render', () => {
 });
 
 describe('Show Modal', () => {
-  test('should show modal on click', () => {
+  test('should hide modal on click', () => {
     const instance = wrapper.instance();
     jest.spyOn(instance, 'showModal');
     instance.showModal();
     expect(instance.showModal).toHaveBeenCalledTimes(1);
+  });
+  test('should hide modal on click', () => {
+    const instance = wrapper.instance();
+    jest.spyOn(instance, 'showModal');
+    instance.showModal();
+    expect(instance.showModal).toHaveBeenCalledTimes(2);
   });
 });
 
@@ -93,6 +99,17 @@ describe('Tooltip hovering', () => {
     instance.toolTipHoverOver(event);
     expect(instance.toolTipHoverOver).toHaveBeenCalledTimes(4);
   });
+  test('should not change state on tooltip hoverover with wrong class', () => {
+    const event = {
+      target: {
+        className: 'grid-4',
+      },
+    };
+    const instance = wrapper.instance();
+    jest.spyOn(instance, 'toolTipHoverOver');
+    instance.toolTipHoverOver(event);
+    expect(instance.toolTipHoverOver).toHaveBeenCalledTimes(5);
+  });
   test('should change state on tooltip hoverout', () => {
     const event = {
       target: {
@@ -136,5 +153,28 @@ describe('Tooltip hovering', () => {
     jest.spyOn(instance, 'toolTipHoverOut');
     instance.toolTipHoverOut(event);
     expect(instance.toolTipHoverOut).toHaveBeenCalledTimes(4);
+  });
+  test('should not change state on tooltip hoverout with wrong class', () => {
+    const event = {
+      target: {
+        className: 'grid-4',
+      },
+    };
+    const instance = wrapper.instance();
+    jest.spyOn(instance, 'toolTipHoverOut');
+    instance.toolTipHoverOut(event);
+    expect(instance.toolTipHoverOut).toHaveBeenCalledTimes(5);
+  });
+  test('should log on blur for accessibility', () => {
+    const instance = wrapper.instance();
+    jest.spyOn(instance, 'onBlurFunc');
+    instance.onBlurFunc();
+    expect(instance.onBlurFunc).toHaveBeenCalledTimes(1);
+  });
+  test('should log on focus for accessibility', () => {
+    const instance = wrapper.instance();
+    jest.spyOn(instance, 'onFocusFunc');
+    instance.onFocusFunc();
+    expect(instance.onFocusFunc).toHaveBeenCalledTimes(1);
   });
 });

@@ -45,19 +45,21 @@ class App extends React.Component {
       },
       userZip: '98105',
       distance: 0,
+      price: 'Free',
     };
     this.getData = this.getData.bind(this);
+    this.changeZip = this.changeZip.bind(this);
   }
 
   componentDidMount() {
-    this.getData();
+    const { userZip } = this.state;
+    this.getData(userZip);
   }
 
-  getData() {
+  getData(zip) {
     const randNum = Math.round(Math.random() * 99);
-    const { userZip } = this.state;
     axios.get(`/api/item/${randNum}`)
-    // axios.get('/api/item/0')
+      // axios.get('/api/item/0')
       .then((item) => {
         const {
           rating, info, selectors, shipping, extDetails, shopPolicy, seller,
@@ -65,7 +67,7 @@ class App extends React.Component {
         const { latitude, longitude } = shipping.origin;
         const lat0 = latitude;
         const long0 = longitude;
-        axios.get(`http://dev.virtualearth.net/REST/v1/Locations?countryRegion=US&postalCode=${userZip}&key=${BING_KEY}`)
+        axios.get(`http://dev.virtualearth.net/REST/v1/Locations?countryRegion=US&postalCode=${zip}&key=${BING_KEY}`)
           .then((zipData) => {
             const resources = zipData.data.resourceSets[0].resources[0];
             const lat1 = resources.geocodePoints[0].coordinates[0];
@@ -74,17 +76,35 @@ class App extends React.Component {
               .then((distanceData) => {
                 const distanceResults = distanceData.data.resourceSets[0].resources[0];
                 const distance = distanceResults.results[0].travelDuration;
+                let price;
+                if (distance > 1440) {
+                  price = '$4.99';
+                } else {
+                  price = 'Free';
+                }
                 this.setState({
-                  rating, info, selectors, shipping, extDetails, shopPolicy, seller, distance,
+                  rating,
+                  info,
+                  selectors,
+                  shipping,
+                  extDetails,
+                  shopPolicy,
+                  seller,
+                  distance,
+                  price,
                 });
               });
           });
       });
   }
 
+  changeZip(userZip) {
+    this.getData(userZip);
+  }
+
   render() {
     const {
-      rating, info, selectors, shipping, extDetails, shopPolicy, seller, distance,
+      rating, info, selectors, shipping, extDetails, shopPolicy, seller, distance, price,
     } = this.state;
     extDetails.sales = rating.sales;
     extDetails.availability = info.availability;
@@ -100,8 +120,10 @@ class App extends React.Component {
           shipping={shipping}
           shopPolicy={shopPolicy}
           name={name}
+          price={price}
+          changeZip={this.changeZip}
         />
-        <Seller seller={seller} />
+        <Seller seller={seller} shopName={name} />
       </div>
     );
   }

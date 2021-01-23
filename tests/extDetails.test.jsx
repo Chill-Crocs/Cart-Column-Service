@@ -11,9 +11,8 @@ const extDetails = {
   description: 'A description',
 };
 
-const wrapper = mount(<ExtDetails extDetails={extDetails} />);
-
 describe('extDetails render', () => {
+  const wrapper = mount(<ExtDetails extDetails={extDetails} />);
   test('should have correct state', () => {
     expect(wrapper).toHaveState('detailsClicked');
     expect(wrapper).toHaveState('descriptionClicked');
@@ -25,6 +24,7 @@ describe('extDetails render', () => {
 });
 
 describe('getCollapDetails', () => {
+  const wrapper = mount(<ExtDetails extDetails={extDetails} />);
   test('should check getCollapDetails()', () => {
     const instance = wrapper.instance();
     jest.spyOn(instance, 'getCollapDetails');
@@ -34,6 +34,7 @@ describe('getCollapDetails', () => {
 });
 
 describe('getCollapDescrip', () => {
+  const wrapper = mount(<ExtDetails extDetails={extDetails} />);
   test('should check getCollapDescrip()', () => {
     const instance = wrapper.instance();
     jest.spyOn(instance, 'getCollapDescrip');
@@ -43,6 +44,7 @@ describe('getCollapDescrip', () => {
 });
 
 describe('getCollapShipping', () => {
+  const wrapper = mount(<ExtDetails extDetails={extDetails} />);
   test('should check getCollapShipping', () => {
     const instance = wrapper.instance();
     jest.spyOn(instance, 'getCollapShipping');
@@ -53,6 +55,10 @@ describe('getCollapShipping', () => {
 });
 
 describe('onClick', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<ExtDetails extDetails={extDetails} />);
+  });
   test('should change state when details collap is clicked', () => {
     const event = {
       target: {
@@ -73,7 +79,7 @@ describe('onClick', () => {
     const instance = wrapper.instance();
     jest.spyOn(instance, 'collapseOnClick');
     instance.collapseOnClick(event);
-    expect(instance.collapseOnClick).toHaveBeenCalledTimes(2);
+    expect(instance.collapseOnClick).toHaveBeenCalledTimes(1);
   });
   test('should change state when shipping collap is clicked', () => {
     const event = {
@@ -84,9 +90,9 @@ describe('onClick', () => {
     const instance = wrapper.instance();
     jest.spyOn(instance, 'collapseOnClick');
     instance.collapseOnClick(event);
-    expect(instance.collapseOnClick).toHaveBeenCalledTimes(3);
+    expect(instance.collapseOnClick).toHaveBeenCalledTimes(1);
   });
-  test('should change state when description button is clicked', () => {
+  test('should change state when description button is clicked for content hide', () => {
     const event = {
       target: {
         className: 'descriptionButton',
@@ -95,6 +101,48 @@ describe('onClick', () => {
     const instance = wrapper.instance();
     jest.spyOn(instance, 'collapseOnClick');
     instance.collapseOnClick(event);
-    expect(instance.collapseOnClick).toHaveBeenCalledTimes(4);
+    expect(instance.collapseOnClick).toHaveBeenCalledTimes(1);
+  });
+  test('should change state when description button is clicked for content expand', () => {
+    const event = {
+      target: {
+        className: 'descriptionButton',
+      },
+    };
+    const instance = wrapper.instance();
+    jest.spyOn(instance, 'collapseOnClick');
+    instance.collapseOnClick(event);
+    instance.collapseOnClick(event);
+    expect(instance.collapseOnClick).toHaveBeenCalledTimes(2);
+  });
+  test('should change state on random classname', () => {
+    const event = {
+      target: {
+        className: 'aButton',
+      },
+    };
+    const instance = wrapper.instance();
+    instance.collapseOnClick(event);
+    expect(wrapper.state('detailsClicked')).toBe(false);
+    expect(wrapper.state('descriptionClicked')).toBe(false);
+    expect(wrapper.state('shippingClicked')).toBe(false);
+    expect(wrapper.state('descriptionExpand')).toEqual('contentHide');
+    expect(wrapper.state('shader')).toEqual('shaderOn');
+    expect(wrapper.state('expandButtonContent')).toEqual('Learn more about this item');
+  });
+});
+
+const extDetails2 = {
+  sales: 100,
+  availability: true,
+  description: 'A description',
+};
+
+const wrapper2 = mount(<ExtDetails extDetails={extDetails2} />);
+
+describe('Low sales', () => {
+  test('should not render an icon on low sales', () => {
+    expect(wrapper2.find('.inline-svg-1').exists()).toBeFalsy();
+    expect(wrapper2.find('.inline-svg-2').exists()).toBeFalsy();
   });
 });

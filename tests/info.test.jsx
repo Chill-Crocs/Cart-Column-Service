@@ -11,9 +11,11 @@ const info = {
   availability: true,
 };
 
-const wrapper = mount(<Info info={info} />);
-
 describe('Info render', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<Info info={info} />);
+  });
   test('should have the correct tags in the tags list', () => {
     expect(wrapper.find('.tagList')).toIncludeText('Practical');
     expect(wrapper.find('.tagList')).toIncludeText('Rustic');

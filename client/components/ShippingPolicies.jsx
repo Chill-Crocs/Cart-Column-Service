@@ -10,8 +10,8 @@ class ShippingPolicies extends React.Component {
       shader: 'policyShaderOn',
       expandButtonContent: 'More',
     };
-
     this.getReturnTypes = this.getReturnTypes.bind(this);
+    this.getExchanges = this.getExchanges.bind(this);
     this.collapseOnClick = this.collapseOnClick.bind(this);
   }
 
@@ -187,7 +187,7 @@ ShippingPolicies.defaultProps = {
     lastUpdated: '',
   },
   name: '',
-  showModal: PropTypes.func,
+  showModal: () => {},
   modalClass: '',
 };
 

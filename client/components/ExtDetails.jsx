@@ -72,10 +72,19 @@ class ExtDetails extends React.Component {
       shopPolicy,
       distance,
       name,
+      price,
+      changeZip,
     } = this.props;
     if (shippingClicked) {
       return (
-        <Shipping shipping={shipping} shopPolicy={shopPolicy} distance={distance} name={name} />
+        <Shipping
+          shipping={shipping}
+          shopPolicy={shopPolicy}
+          distance={distance}
+          name={name}
+          price={price}
+          changeZip={changeZip}
+        />
       );
     }
     return <span />;
@@ -140,7 +149,7 @@ class ExtDetails extends React.Component {
       const randDescription = getFirstRandDescription();
       if (!availability) {
         return (
-          <span className="inline-svg">
+          <span className="inline-svg-1">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 11 15 15" className="temp" aria-hidden="true" focusable="false">
               <g data-animator-group="true" data-animator-type="1" fill="none"><path id="empty" d="M16 14.7c0 0.4 0.1 0.9 0.4 1.2l5.2 6.9c0 0.9 0 1.5 0 2.4l-5.2 6.9c-0.3 0.3-0.4 0.8-0.4 1.2V38h16v-4.7c0-0.4-0.1-0.8-0.4-1.2l-5.2-6.9c0-0.9 0-1.5 0-2.4l5.2-6.9c0.3-0.4 0.4-0.8 0.4-1.2V10H16V14.7z" /></g>
               <g data-animator-group="true" data-animator-type="0"><path id="sand" d="M18 12c0 0.1 0 2.2 0 2.3 0 0.2 0.1 0.4 0.2 0.6l5 6.7c0.4 0.5 1.2 0.5 1.6 0l5-6.7c0.1-0.2 0.2-0.4 0.2-0.6 0-0.1 0-2.2 0-2.3C26 12 22 12 18 12z" /></g>
@@ -161,7 +170,7 @@ class ExtDetails extends React.Component {
         );
       } if (sales > 200) {
         return (
-          <span className="inline-svg">
+          <span className="inline-svg-2">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 11 15 15" aria-hidden="true" focusable="false">
               <g data-animator-group="true" data-animator-type="2">
                 <polygon points="43 8 41.9 6.1 40 5 41.9 3.9 43 2 44.1 3.9 46 5 44.1 6.1 " id="cart-star" />
@@ -225,7 +234,7 @@ class ExtDetails extends React.Component {
           {getFirstDetail()}
         </div>
         <div className="details">
-          <span className="inline-svg">
+          <span className="inline-svg-3">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 11 15 15" aria-hidden="true" focusable="false">
               <g data-animator-group="true" data-animator-type="0">
                 <circle cx="13" cy="38" r="4" />
@@ -242,7 +251,7 @@ class ExtDetails extends React.Component {
               <g data-animator-group="true" data-animator-type="0">
                 <g data-animator-group="true" data-animator-type="1">
                   <path d="M38.6 15c-0.6-0.3-1.1-0.6-1.7-1H28v14H4v7c0.4 0.4 0.6 0.6 1 1h2.4c0.8-2.3 3-4 5.6-4s4.8 1.7 5.6 4h10.7c0.8-2.3 3-4 5.6-4s4.8 1.7 5.6 4H43c0.4-0.4 0.6-0.6 1-1V24L38.6 15zM32 24v-6h4.9l3.6 6H32z" />
-                  <path id="lp-collage-shipping--truck-body-container" d="M28 10c-0.8-0.8-1.2-1.2-2-2H6c-0.8 0.8-1.2 1.2-2 2v18h24V10z" />
+                  <path id="truck-container" d="M28 10c-0.8-0.8-1.2-1.2-2-2H6c-0.8 0.8-1.2 1.2-2 2v18h24V10z" />
                 </g>
               </g>
             </svg>
@@ -291,6 +300,8 @@ ExtDetails.propTypes = {
   }),
   distance: PropTypes.number,
   name: PropTypes.string,
+  changeZip: PropTypes.func,
+  price: PropTypes.string,
 };
 
 ExtDetails.defaultProps = {
@@ -313,4 +324,6 @@ ExtDetails.defaultProps = {
   },
   distance: -1,
   name: '',
+  changeZip: PropTypes.func,
+  price: '',
 };

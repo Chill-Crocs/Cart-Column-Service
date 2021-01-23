@@ -1,13 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class ShippingCost extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       expand: false,
+      zipcode: '',
+      country: '',
+      buttonText: 'Get shipping cost',
+      costExpand: 'hide',
     };
     this.onExpand = this.onExpand.bind(this);
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.onGetCost = this.onGetCost.bind(this);
     this.getSelector = this.getSelector.bind(this);
+    this.onZipChange = this.onZipChange.bind(this);
   }
 
   onExpand() {
@@ -16,8 +24,39 @@ class ShippingCost extends React.Component {
     this.setState({ expand });
   }
 
+  onFormSubmit(e) {
+    e.preventDefault();
+    this.onGetCost();
+  }
+
+  onGetCost() {
+    let {
+      costExpand,
+      buttonText,
+      zipcode,
+      country,
+    } = this.state;
+
+    const {
+      changeZip,
+    } = this.props;
+    if (costExpand === 'hide') {
+      costExpand = 'cost-box';
+    }
+    country = 'United States';
+    buttonText = `Deliver to ${country}, ${zipcode}`;
+    changeZip(zipcode);
+    zipcode = '';
+    this.setState({ costExpand, buttonText, zipcode });
+  }
+
+  onZipChange(e) {
+    const zipcode = e.target.value;
+    this.setState({ zipcode });
+  }
+
   getSelector() {
-    const { expand } = this.state;
+    const { expand, zipcode } = this.state;
     if (expand) {
       return (
         <div className="selectors area-selector">
@@ -286,13 +325,12 @@ class ShippingCost extends React.Component {
                 <option value="218">Zimbabwe</option>
               </optgroup>
             </select>
-            <form>
+            <form id="cost-form" onSubmit={this.onFormSubmit}>
               <label htmlFor="zipcode-estimator">
                 Zip or postal code
                 <br />
-                <input type="text" id="zipcode-estimator" />
+                <input type="text" id="zipcode-estimator" value={zipcode} onChange={this.onZipChange} />
               </label>
-              {/* <input type="text" id="zipcode"></input> */}
             </form>
           </div>
         </div>
@@ -302,10 +340,28 @@ class ShippingCost extends React.Component {
   }
 
   render() {
+    const {
+      buttonText, costExpand,
+    } = this.state;
+
+    const {
+      price,
+    } = this.props;
+
     return (
       <div>
+        <div className={costExpand}>
+          <div>
+            <div className="cost-info-text">
+              Cost to ship
+            </div>
+            <div className="cost-info-price">
+              {price}
+            </div>
+          </div>
+        </div>
         <button type="button" className="shippingCostCollapsible" onClick={this.onExpand}>
-          Get shipping cost
+          {buttonText}
         </button>
         {this.getSelector()}
         <span id="shippingInfo">
@@ -315,5 +371,15 @@ class ShippingCost extends React.Component {
     );
   }
 }
+
+ShippingCost.propTypes = {
+  changeZip: PropTypes.func,
+  price: PropTypes.string,
+};
+
+ShippingCost.defaultProps = {
+  changeZip: () => {},
+  price: '',
+};
 
 export default ShippingCost;

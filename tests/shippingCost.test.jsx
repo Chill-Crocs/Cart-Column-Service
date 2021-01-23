@@ -23,3 +23,38 @@ describe('Expand collapsible', () => {
     expect(instance.onExpand).toHaveBeenCalledTimes(1);
   });
 });
+
+describe('Form Submit', () => {
+  const e = {
+    preventDefault: function() {},
+  }
+  test('should have a form submission', () => {
+    const instance = wrapper.instance();
+    jest.spyOn(instance, 'onFormSubmit');
+    instance.onFormSubmit(e);
+    expect(instance.onFormSubmit).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('Get Cost', () => {
+  test('should be able to change cost', () => {
+    const instance = wrapper.instance();
+    jest.spyOn(instance, 'onGetCost');
+    instance.onGetCost();
+    expect(instance.onGetCost).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('Zip Change', () => {
+  const e = {
+    target: {
+      value: '',
+    },
+  };
+  test('should have a zipcode change listener', () => {
+    const instance = wrapper.instance();
+    jest.spyOn(instance, 'onZipChange');
+    instance.onZipChange(e);
+    expect(instance.onZipChange).toHaveBeenCalledTimes(1);
+  });
+});
