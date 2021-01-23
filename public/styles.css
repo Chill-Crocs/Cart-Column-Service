@@ -252,7 +252,7 @@ svg {
   color: white;
 }
 
-.inline-svg {
+.inline-svg-1, .inline-svg-2, .inline-svg-3 {
   display: inline-flex;
 }
 

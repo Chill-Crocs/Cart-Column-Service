@@ -94,8 +94,7 @@ class App extends React.Component {
                   price,
                 });
               });
-          })
-          .catch((err) => console.log(err));
+          });
       });
   }
 

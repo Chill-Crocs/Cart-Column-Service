@@ -149,7 +149,7 @@ class ExtDetails extends React.Component {
       const randDescription = getFirstRandDescription();
       if (!availability) {
         return (
-          <span className="inline-svg">
+          <span className="inline-svg-1">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 11 15 15" className="temp" aria-hidden="true" focusable="false">
               <g data-animator-group="true" data-animator-type="1" fill="none"><path id="empty" d="M16 14.7c0 0.4 0.1 0.9 0.4 1.2l5.2 6.9c0 0.9 0 1.5 0 2.4l-5.2 6.9c-0.3 0.3-0.4 0.8-0.4 1.2V38h16v-4.7c0-0.4-0.1-0.8-0.4-1.2l-5.2-6.9c0-0.9 0-1.5 0-2.4l5.2-6.9c0.3-0.4 0.4-0.8 0.4-1.2V10H16V14.7z" /></g>
               <g data-animator-group="true" data-animator-type="0"><path id="sand" d="M18 12c0 0.1 0 2.2 0 2.3 0 0.2 0.1 0.4 0.2 0.6l5 6.7c0.4 0.5 1.2 0.5 1.6 0l5-6.7c0.1-0.2 0.2-0.4 0.2-0.6 0-0.1 0-2.2 0-2.3C26 12 22 12 18 12z" /></g>
@@ -170,7 +170,7 @@ class ExtDetails extends React.Component {
         );
       } if (sales > 200) {
         return (
-          <span className="inline-svg">
+          <span className="inline-svg-2">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 11 15 15" aria-hidden="true" focusable="false">
               <g data-animator-group="true" data-animator-type="2">
                 <polygon points="43 8 41.9 6.1 40 5 41.9 3.9 43 2 44.1 3.9 46 5 44.1 6.1 " id="cart-star" />
@@ -234,7 +234,7 @@ class ExtDetails extends React.Component {
           {getFirstDetail()}
         </div>
         <div className="details">
-          <span className="inline-svg">
+          <span className="inline-svg-3">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 11 15 15" aria-hidden="true" focusable="false">
               <g data-animator-group="true" data-animator-type="0">
                 <circle cx="13" cy="38" r="4" />

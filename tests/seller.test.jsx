@@ -23,6 +23,14 @@ describe('Seller Functions', () => {
       value: '',
     },
   };
+  const e2 = {
+    preventDefault: function () {},
+    keyCode: 10,
+    shiftKey: true,
+    target: {
+      value: '',
+    },
+  };
   test('should have a submit form function', () => {
     const instance = wrapper.instance();
     jest.spyOn(instance, 'onFormSubmit');
@@ -34,6 +42,12 @@ describe('Seller Functions', () => {
     jest.spyOn(instance, 'onEnterPress');
     instance.onEnterPress(e);
     expect(instance.onEnterPress).toHaveBeenCalledTimes(1);
+  });
+  test('should have a enter button listener that returns nothing on non-enter', () => {
+    const instance = wrapper.instance();
+    jest.spyOn(instance, 'onEnterPress');
+    instance.onEnterPress(e2);
+    expect(instance.onEnterPress).toHaveBeenCalledTimes(2);
   });
   test('should have a on change listener', () => {
     const instance = wrapper.instance();

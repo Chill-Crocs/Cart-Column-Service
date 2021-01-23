@@ -55,10 +55,25 @@ describe('Map Return Types', () => {
 describe('Collapse Click', () => {
   test('should have a collapse button that works', () => {
     const instance = wrapper2.instance();
+    wrapper2.setState({ descriptionExpand: 'policyContentExpand' });
     jest.spyOn(instance, 'collapseOnClick');
     instance.collapseOnClick();
     expect(instance.collapseOnClick).toHaveBeenCalledTimes(1);
   });
+  test('should change state when collapse button is clicked', () => {
+    const instance = wrapper2.instance();
+    wrapper2.find('.descriptionButton').simulate('click');
+    expect(wrapper2.state('expandButtonContent')).toEqual('Less');
+  });
 });
 
-j
+describe('Get Exchanges', () => {
+  test('should have a function that returns back the return conditions or returns nothing if returns are not allowed', () => {
+    const instance = wrapper.instance();
+    const instance2 = wrapper2.instance();
+    instance.getExchanges();
+    instance2.getExchanges();
+    expect(wrapper.find('.policyContainer').exists()).toBeFalsy();
+    expect(wrapper2.find('.policyContainer').exists()).toBeTruthy();
+  });
+});
