@@ -752,8 +752,9 @@ svg {
 
 /******************************** SVG STYLING START ************************************/
 
-#lp-collage-shipping--wheel-right, #lp-collage-shipping--wheel-left {
-  fill: #4D6BC6;
+
+#cart-fill {
+  fill: none;
 }
 
 #sand {
@@ -768,13 +769,39 @@ svg {
   fill: #D7E6F5
 }
 
-#cart-star {
-  fill: #4D6BC6;
-}
-
 #cart-fill {
   fill: none;
 }
+
+@keyframes starSparkle {
+  from {fill: rgb(255, 255, 255);}
+  to {fill : #4D6BC6;}
+}
+
+#cart-star1, #cart-star2, #cart-star3 {
+  fill: #4d6bc6;
+}
+
+#cart-star1 {
+  animation: starSparkle 3s ease;
+}
+
+#cart-star2 {
+  animation: starSparkle 3s ease 1s;
+}
+
+#cart-star3 {
+  animation: starSparkle 3s ease 2s;
+}
+
+#wheel-right, #wheel-left {
+  fill: #4D6BC6;
+}
+
+#truck-container {
+  fill: #D7E6F5;
+}
+
 
 /******************************** SVG STYLING END ************************************/
 
@@ -1039,8 +1066,4 @@ svg {
   margin-bottom: 14px;
 }
 
-#truck-container {
-  fill: #D7E6F5;
-
   /******************************** PRIORITY STYLING END ************************************/
-}

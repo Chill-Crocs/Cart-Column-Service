@@ -173,13 +173,13 @@ class ExtDetails extends React.Component {
           <span className="inline-svg-2">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 11 15 15" aria-hidden="true" focusable="false">
               <g data-animator-group="true" data-animator-type="2">
-                <polygon points="43 8 41.9 6.1 40 5 41.9 3.9 43 2 44.1 3.9 46 5 44.1 6.1 " id="cart-star" />
+                <polygon points="43 8 41.9 6.1 40 5 41.9 3.9 43 2 44.1 3.9 46 5 44.1 6.1 " id="cart-star1" />
               </g>
               <g data-animator-group="true" data-animator-type="2">
-                <polygon points="6 27 4.9 25.1 3 24 4.9 22.9 6 21 7.1 22.9 9 24 7.1 25.1 " id="cart-star" />
+                <polygon points="6 27 4.9 25.1 3 24 4.9 22.9 6 21 7.1 22.9 9 24 7.1 25.1 " id="cart-star2" />
               </g>
               <g data-animator-group="true" data-animator-type="2">
-                <polygon points="43 41 41.9 39.1 40 38 41.9 36.9 43 35 44.1 36.9 46 38 44.1 39.1 " id="cart-star" />
+                <polygon points="43 41 41.9 39.1 40 38 41.9 36.9 43 35 44.1 36.9 46 38 44.1 39.1 " id="cart-star3" />
               </g>
               <g data-animator-group="true" data-animator-type="0">
                 <g data-animator-group="true" data-animator-type="1">
@@ -243,10 +243,10 @@ class ExtDetails extends React.Component {
                 <circle cx="35" cy="38" r="4" />
               </g>
               <g data-animator-group="true" data-animator-type="0">
-                <circle id="lp-collage-shipping--wheel-left" cx="13" cy="38" r="4" />
+                <circle id="wheel-left" cx="13" cy="38" r="4" />
               </g>
               <g data-animator-group="true" data-animator-type="0">
-                <circle id="lp-collage-shipping--wheel-right" cx="35" cy="38" r="4" />
+                <circle id="wheel-right" cx="35" cy="38" r="4" />
               </g>
               <g data-animator-group="true" data-animator-type="0">
                 <g data-animator-group="true" data-animator-type="1">
