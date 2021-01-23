@@ -15,6 +15,7 @@ class Messages extends React.Component {
   }
 
   componentDidUpdate() {
+    setInterval(this.forceUpdate.bind(this), 60000);
     this.scrollToBottom();
   }
 
