@@ -19,4 +19,4 @@ jobs:
             - /home/circleci/.npm
       - run:
           name: Run Tests
-          command: npm test
+          command: npm test $BING_API_KEY

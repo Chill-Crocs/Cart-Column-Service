@@ -6,7 +6,9 @@ import Info from './Info';
 import Selector from './Selector';
 import ExtDetails from './ExtDetails';
 import Seller from './Seller';
-import BING_KEY from '../../keys/BING_API_KEY';
+// import BING_KEY from '../../keys/BING_API_KEY';
+
+const BING_KEY = process.env.BING_API_KEY ? process.env.BING_API_KEY : require('../../keys/BING_API_KEY');
 
 class App extends React.Component {
   constructor() {
