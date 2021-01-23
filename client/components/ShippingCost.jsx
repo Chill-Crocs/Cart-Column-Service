@@ -40,15 +40,14 @@ class ShippingCost extends React.Component {
     const {
       changeZip,
     } = this.props;
-
     if (costExpand === 'hide') {
       costExpand = 'cost-box';
-      country = 'United States';
-      buttonText = `Deliver to ${country}, ${zipcode}`;
-      changeZip(zipcode);
-      zipcode = '';
-      this.setState({ costExpand, buttonText, zipcode });
     }
+    country = 'United States';
+    buttonText = `Deliver to ${country}, ${zipcode}`;
+    changeZip(zipcode);
+    zipcode = '';
+    this.setState({ costExpand, buttonText, zipcode });
   }
 
   onZipChange(e) {
@@ -326,7 +325,7 @@ class ShippingCost extends React.Component {
                 <option value="218">Zimbabwe</option>
               </optgroup>
             </select>
-            <form onSubmit={this.onFormSubmit}>
+            <form id="cost-form" onSubmit={this.onFormSubmit}>
               <label htmlFor="zipcode-estimator">
                 Zip or postal code
                 <br />
@@ -342,7 +341,7 @@ class ShippingCost extends React.Component {
 
   render() {
     const {
-      buttonText,
+      buttonText, costExpand,
     } = this.state;
 
     const {
@@ -351,7 +350,7 @@ class ShippingCost extends React.Component {
 
     return (
       <div>
-        <div className="cost-box">
+        <div className={costExpand}>
           <div>
             <div className="cost-info-text">
               Cost to ship
@@ -379,7 +378,7 @@ ShippingCost.propTypes = {
 };
 
 ShippingCost.defaultProps = {
-  changeZip: PropTypes.func,
+  changeZip: () => {},
   price: '',
 };
 

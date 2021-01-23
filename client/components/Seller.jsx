@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import Messages from './Messages';
 
 class Seller extends React.Component {
@@ -13,6 +12,7 @@ class Seller extends React.Component {
       messageBox: [],
     };
     this.submitButton = React.createRef();
+    this.messagesEnd = React.createRef();
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.onEnterPress = this.onEnterPress.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -24,8 +24,7 @@ class Seller extends React.Component {
     e.preventDefault();
     let { message } = this.state;
     const { messageBox } = this.state;
-    const time = moment();
-    messageBox.push({ message, time });
+    messageBox.push(message);
     message = '';
     this.setState({ message, messageBox });
   }
@@ -93,7 +92,7 @@ class Seller extends React.Component {
           </div>
           <div className="extDetails-buttons">
             <div className="buyButton">
-              <button type="button" onClick={this.modalOnClick}>{`Message ${name}`}</button>
+              <button type="button" className="extDetailBuyButton" onClick={this.modalOnClick}>{`Message ${name}`}</button>
             </div>
           </div>
         </div>

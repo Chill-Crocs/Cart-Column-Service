@@ -67,7 +67,6 @@ class App extends React.Component {
         const { latitude, longitude } = shipping.origin;
         const lat0 = latitude;
         const long0 = longitude;
-        console.log(zip);
         axios.get(`http://dev.virtualearth.net/REST/v1/Locations?countryRegion=US&postalCode=${zip}&key=${BING_KEY}`)
           .then((zipData) => {
             const resources = zipData.data.resourceSets[0].resources[0];
@@ -78,7 +77,6 @@ class App extends React.Component {
                 const distanceResults = distanceData.data.resourceSets[0].resources[0];
                 const distance = distanceResults.results[0].travelDuration;
                 let price;
-                console.log(distanceResults.results[0]);
                 if (distance > 1440) {
                   price = '$4.99';
                 } else {
@@ -96,7 +94,8 @@ class App extends React.Component {
                   price,
                 });
               });
-          });
+          })
+          .catch((err) => console.log(err));
       });
   }
 

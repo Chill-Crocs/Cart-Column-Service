@@ -33,7 +33,7 @@ class Messages extends React.Component {
             <div className="messageBox">
               <div className="messageBlurb">
                 <div className="messageContent">
-                  {value.message}
+                  {value}
                 </div>
               </div>
             </div>
@@ -47,7 +47,7 @@ class Messages extends React.Component {
         <div key={i} className="messageBox">
           <div className="messageBlurb">
             <div className="messageContent">
-              {value.message}
+              {value}
             </div>
           </div>
         </div>
@@ -86,12 +86,7 @@ class Messages extends React.Component {
 }
 
 Messages.propTypes = {
-  messageBox: PropTypes.arrayOf(
-    PropTypes.shape({
-      message: PropTypes.string,
-      time: PropTypes.string,
-    }),
-  ),
+  messageBox: PropTypes.arrayOf(PropTypes.string),
   name: PropTypes.string,
 };
 

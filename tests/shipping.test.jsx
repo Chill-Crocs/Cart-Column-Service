@@ -137,4 +137,16 @@ describe('Tooltip hovering', () => {
     instance.toolTipHoverOut(event);
     expect(instance.toolTipHoverOut).toHaveBeenCalledTimes(4);
   });
+  test('should log on blur for accessibility', () => {
+    const instance = wrapper.instance();
+    jest.spyOn(instance, 'onBlurFunc');
+    instance.onBlurFunc();
+    expect(instance.onBlurFunc).toHaveBeenCalledTimes(1);
+  });
+  test('should log on focus for accessibility', () => {
+    const instance = wrapper.instance();
+    jest.spyOn(instance, 'onFocusFunc');
+    instance.onFocusFunc();
+    expect(instance.onFocusFunc).toHaveBeenCalledTimes(1);
+  });
 });

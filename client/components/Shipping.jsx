@@ -13,10 +13,26 @@ class Shipping extends React.Component {
       toolTip1: 'hide',
       toolTip2: 'hide',
       toolTip3: 'hide',
+      accessFocus: 'off',
+      accessBlur: 'off',
     };
     this.showModal = this.showModal.bind(this);
     this.toolTipHoverOver = this.toolTipHoverOver.bind(this);
     this.toolTipHoverOut = this.toolTipHoverOut.bind(this);
+    this.onFocusFunc = this.onFocusFunc.bind(this);
+    this.onBlurFunc = this.onBlurFunc.bind(this);
+  }
+
+  onBlurFunc() {
+    let { accessBlur } = this.state;
+    accessBlur = 'on';
+    this.setState({ accessBlur });
+  }
+
+  onFocusFunc() {
+    let { accessFocus } = this.state;
+    accessFocus = 'on';
+    this.setState({ accessFocus });
   }
 
   showModal() {
@@ -91,9 +107,9 @@ class Shipping extends React.Component {
           <div
             className="dotted-shipping arrival"
             onMouseOver={this.toolTipHoverOver}
-            onFocus={(e) => console.log(e, 'mousein')}
+            onFocus={this.onFocusFunc}
             onMouseOut={this.toolTipHoverOut}
-            onBlur={(e) => console.log(e, 'mouseout')}
+            onBlur={this.onBlurFunc}
           >
             Estimated arrival
           </div>
@@ -118,9 +134,9 @@ class Shipping extends React.Component {
             id="shipped-grid-0-0"
             className="shipped-grid-0-0 grid-3"
             onMouseOver={this.toolTipHoverOver}
-            onFocus={(e) => console.log(e, 'mousein')}
+            onFocus={this.onFocusFunc}
             onMouseOut={this.toolTipHoverOut}
-            onBlur={(e) => console.log(e, 'mouseout')}
+            onBlur={this.onBlurFunc}
           >
             <div id="grid-0-0-content" className="grid-3">
               <span className="etsy-icon grid-3">
@@ -152,9 +168,9 @@ class Shipping extends React.Component {
             id="shipped-grid-0-1"
             className="shipped-grid-0-1 grid-1"
             onMouseOver={this.toolTipHoverOver}
-            onFocus={(e) => console.log(e, 'mousein')}
+            onFocus={this.onFocusFunc}
             onMouseOut={this.toolTipHoverOut}
-            onBlur={(e) => console.log(e, 'mouseout')}
+            onBlur={this.onBlurFunc}
           >
             <span className="icon-connector-2 grid-1" />
             <div id="grid-0-1-content" className="grid-1">
@@ -185,9 +201,9 @@ class Shipping extends React.Component {
             id="shipped-grid-0-2"
             className="shipped-grid-0-2 grid-2"
             onMouseOver={this.toolTipHoverOver}
-            onFocus={(e) => console.log(e, 'mousein')}
+            onFocus={this.onFocusFunc}
             onMouseOut={this.toolTipHoverOut}
-            onBlur={(e) => console.log(e, 'mouseout')}
+            onBlur={this.onBlurFunc}
           >
             <span className="icon-connector-4 grid-2" />
             <div id="grid-0-2-content" className="grid-2">

@@ -187,7 +187,7 @@ ShippingPolicies.defaultProps = {
     lastUpdated: '',
   },
   name: '',
-  showModal: PropTypes.func,
+  showModal: () => {},
   modalClass: '',
 };
 
