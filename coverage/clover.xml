@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1611442088583" clover="3.2.0">
-  <project timestamp="1611442088583" name="All files">
-    <metrics statements="332" coveredstatements="332" conditionals="82" coveredconditionals="82" methods="65" coveredmethods="64" elements="479" coveredelements="478" complexity="0" loc="332" ncloc="332" packages="2" files="11" classes="11"/>
+<coverage generated="1611444530901" clover="3.2.0">
+  <project timestamp="1611444530901" name="All files">
+    <metrics statements="331" coveredstatements="331" conditionals="82" coveredconditionals="82" methods="65" coveredmethods="64" elements="478" coveredelements="477" complexity="0" loc="331" ncloc="331" packages="2" files="11" classes="11"/>
     <package name="client.components">
-      <metrics statements="331" coveredstatements="331" conditionals="82" coveredconditionals="82" methods="65" coveredmethods="64"/>
+      <metrics statements="330" coveredstatements="330" conditionals="82" coveredconditionals="82" methods="65" coveredmethods="64"/>
       <file name="App.jsx" path="/Users/ericbyungkim/Desktop/Croxy/Cart-Service/client/components/App.jsx">
         <metrics statements="30" coveredstatements="30" conditionals="2" coveredconditionals="2" methods="8" coveredmethods="8"/>
         <line num="16" count="1" type="stmt"/>
@@ -122,7 +122,7 @@
         <line num="90" count="2" type="stmt"/>
       </file>
       <file name="Messages.jsx" path="/Users/ericbyungkim/Desktop/Croxy/Cart-Service/client/components/Messages.jsx">
-        <metrics statements="36" coveredstatements="36" conditionals="10" coveredconditionals="10" methods="9" coveredmethods="9"/>
+        <metrics statements="35" coveredstatements="35" conditionals="10" coveredconditionals="10" methods="9" coveredmethods="9"/>
         <line num="7" count="4" type="stmt"/>
         <line num="8" count="4" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
@@ -133,32 +133,31 @@
         <line num="27" count="13" type="stmt"/>
         <line num="28" count="13" type="stmt"/>
         <line num="29" count="13" type="stmt"/>
-        <line num="30" count="13" type="stmt"/>
-        <line num="32" count="4" type="stmt"/>
-        <line num="33" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="34" count="5" type="stmt"/>
-        <line num="37" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="4" type="stmt"/>
+        <line num="32" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="33" count="5" type="stmt"/>
+        <line num="36" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="37" count="3" type="stmt"/>
         <line num="38" count="3" type="stmt"/>
-        <line num="39" count="3" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="13" type="stmt"/>
         <line num="44" count="13" type="stmt"/>
-        <line num="45" count="13" type="stmt"/>
+        <line num="45" count="10" type="stmt"/>
         <line num="46" count="10" type="stmt"/>
         <line num="47" count="10" type="stmt"/>
-        <line num="48" count="10" type="stmt"/>
-        <line num="49" count="10" type="cond" truecount="2" falsecount="0"/>
-        <line num="50" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="51" count="2" type="stmt"/>
-        <line num="69" count="2" type="stmt"/>
-        <line num="82" count="6" type="stmt"/>
-        <line num="84" count="13" type="cond" truecount="2" falsecount="0"/>
-        <line num="85" count="8" type="stmt"/>
-        <line num="92" count="13" type="stmt"/>
-        <line num="97" count="5" type="stmt"/>
-        <line num="108" count="9" type="stmt"/>
-        <line num="115" count="3" type="stmt"/>
-        <line num="123" count="3" type="stmt"/>
+        <line num="48" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="49" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="68" count="2" type="stmt"/>
+        <line num="81" count="6" type="stmt"/>
+        <line num="83" count="13" type="cond" truecount="2" falsecount="0"/>
+        <line num="84" count="8" type="stmt"/>
+        <line num="91" count="13" type="stmt"/>
+        <line num="96" count="5" type="stmt"/>
+        <line num="107" count="9" type="stmt"/>
+        <line num="114" count="3" type="stmt"/>
+        <line num="122" count="3" type="stmt"/>
       </file>
       <file name="Rating.jsx" path="/Users/ericbyungkim/Desktop/Croxy/Cart-Service/client/components/Rating.jsx">
         <metrics statements="18" coveredstatements="18" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
