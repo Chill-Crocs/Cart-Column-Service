@@ -27,7 +27,10 @@ const data = {
     description: 'Legal Disclaimer: My items are unbranded and unlicensed products. I do not claim ownership to any character, brand, or person used. Copyrights and/or trademarks used belong to their respective owners. These are inspired designs.',
   },
   shipping: {
-    origin: 98038,
+    origin: {
+      latitude: 47.839958190918,
+      longitude: -122.206146240234,
+    },
     exchanges: true,
   },
   shopPolicy: {
