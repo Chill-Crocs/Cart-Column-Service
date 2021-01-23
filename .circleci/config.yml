@@ -3,6 +3,7 @@ version: 2.1
 # Use a package of configuration called an orb.
 jobs:
   build:
+    working_directory: ~/Cart-Service
     docker:
       - image: circleci/node:fermium
     steps:
