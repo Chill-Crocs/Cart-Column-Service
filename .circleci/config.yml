@@ -19,5 +19,8 @@ jobs:
           paths:
             - /home/circleci/.npm
       - run:
+          name: "What was my custom environment variable?"
+          command: echo $BING_API_KEY
+      - run:
           name: Run Tests
           command: npm test $BING_API_KEY
