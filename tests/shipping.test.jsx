@@ -49,6 +49,7 @@ describe('Show Modal', () => {
   test('should hide modal on click', () => {
     const instance = wrapper.instance();
     jest.spyOn(instance, 'showModal');
+    wrapper.setState({ modalClass: 'show' });
     instance.showModal();
     expect(instance.showModal).toHaveBeenCalledTimes(2);
   });

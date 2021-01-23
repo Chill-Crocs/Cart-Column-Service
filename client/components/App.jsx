@@ -102,6 +102,7 @@ class App extends React.Component {
 
   changeZip(userZip) {
     this.getData(userZip);
+    this.setState({ userZip });
   }
 
   render() {

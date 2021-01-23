@@ -3,17 +3,28 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 import ShippingPolicies from '../client/components/ShippingPolicies';
 
 const shopPolicy = {
   lastUpdated: '2013-02-08',
   returns: false,
   noReturnTypes: ['broken', 'chicken'],
+  showModal: () => {},
 };
 
-const wrapper = mount(
+const wrapper = shallow(
   <ShippingPolicies shopPolicy={shopPolicy} />,
 );
+
+describe('Shipping Policies Render', () => {
+  test('renders correctly', () => {
+    const tree = renderer
+      .create(<ShippingPolicies shopPolicy={shopPolicy} />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});
 
 describe('Map Return Types', () => {
   test('should correctly map return types', () => {
@@ -33,10 +44,19 @@ describe('Collapse Click', () => {
   });
 });
 
+describe('Get Exchanges', () => {
+  test('should have a function getExchanges', () => {
+    const instance = wrapper.instance();
+    jest.spyOn(instance, 'getExchanges');
+    instance.getExchanges();
+    expect(instance.getExchanges).toHaveBeenCalledTimes(1);
+  });
+});
+
 const shopPolicy2 = {
   lastUpdated: '2013-02-08',
   returns: true,
-  noReturnTypes: ['broken', 'chicken'],
+  noReturnTypes: [],
 };
 
 const wrapper2 = mount(
@@ -58,7 +78,7 @@ describe('Collapse Click', () => {
     wrapper2.setState({ descriptionExpand: 'policyContentExpand' });
     jest.spyOn(instance, 'collapseOnClick');
     instance.collapseOnClick();
-    expect(instance.collapseOnClick).toHaveBeenCalledTimes(1);
+    expect(wrapper2.state('descriptionExpand')).toEqual('policyContentHide');
   });
   test('should change state when collapse button is clicked', () => {
     const instance = wrapper2.instance();
@@ -75,5 +95,11 @@ describe('Get Exchanges', () => {
     instance2.getExchanges();
     expect(wrapper.find('.policyContainer').exists()).toBeFalsy();
     expect(wrapper2.find('.policyContainer').exists()).toBeTruthy();
+  });
+});
+
+describe('Default Props', () => {
+  test('should have default prop showModal', () => {
+    expect(ShippingPolicies.defaultProps.showModal).toBeDefined();
   });
 });

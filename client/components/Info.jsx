@@ -15,13 +15,7 @@ class Info extends React.Component {
     const { info } = this.props;
     const { tags, price, availability } = info;
     let i = 0;
-    let separator;
-    const randNum = Math.random();
-    if (randNum > 0.49) {
-      separator = '|';
-    } else {
-      separator = '-';
-    }
+    const separator = '|';
     function mapFunc(value) {
       i += 1;
       if (i === 1 && tags.length > 1) {

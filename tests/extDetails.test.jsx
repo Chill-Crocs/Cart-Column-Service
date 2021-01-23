@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
 import ExtDetails from '../client/components/ExtDetails';
 
 const extDetails = {
@@ -12,45 +13,11 @@ const extDetails = {
 };
 
 describe('extDetails render', () => {
-  const wrapper = mount(<ExtDetails extDetails={extDetails} />);
-  test('should have correct state', () => {
-    expect(wrapper).toHaveState('detailsClicked');
-    expect(wrapper).toHaveState('descriptionClicked');
-    expect(wrapper).toHaveState('shippingClicked');
-    expect(wrapper).toHaveState('descriptionExpand');
-    expect(wrapper).toHaveState('shader');
-    expect(wrapper).toHaveState('expandButtonContent');
-  });
-});
-
-describe('getCollapDetails', () => {
-  const wrapper = mount(<ExtDetails extDetails={extDetails} />);
-  test('should check getCollapDetails()', () => {
-    const instance = wrapper.instance();
-    jest.spyOn(instance, 'getCollapDetails');
-    instance.getCollapDetails();
-    expect(instance.getCollapDetails).toHaveBeenCalledTimes(1);
-  });
-});
-
-describe('getCollapDescrip', () => {
-  const wrapper = mount(<ExtDetails extDetails={extDetails} />);
-  test('should check getCollapDescrip()', () => {
-    const instance = wrapper.instance();
-    jest.spyOn(instance, 'getCollapDescrip');
-    instance.getCollapDescrip();
-    expect(instance.getCollapDescrip).toHaveBeenCalledTimes(1);
-  });
-});
-
-describe('getCollapShipping', () => {
-  const wrapper = mount(<ExtDetails extDetails={extDetails} />);
-  test('should check getCollapShipping', () => {
-    const instance = wrapper.instance();
-    jest.spyOn(instance, 'getCollapShipping');
-    instance.getCollapShipping();
-    expect(instance.getCollapShipping).toHaveBeenCalledTimes(1);
-    expect(instance.getCollapShipping()).toBeTruthy();
+  it('renders correctly', () => {
+    const tree = renderer
+      .create(<ExtDetails extDetails={extDetails} />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
   });
 });
 
@@ -68,7 +35,7 @@ describe('onClick', () => {
     const instance = wrapper.instance();
     jest.spyOn(instance, 'collapseOnClick');
     instance.collapseOnClick(event);
-    expect(instance.collapseOnClick).toHaveBeenCalledTimes(1);
+    expect(wrapper.state('detailsClicked')).toEqual(true);
   });
   test('should change state when description collap is clicked', () => {
     const event = {
@@ -79,7 +46,7 @@ describe('onClick', () => {
     const instance = wrapper.instance();
     jest.spyOn(instance, 'collapseOnClick');
     instance.collapseOnClick(event);
-    expect(instance.collapseOnClick).toHaveBeenCalledTimes(1);
+    expect(wrapper.state('descriptionClicked')).toEqual(true);
   });
   test('should change state when shipping collap is clicked', () => {
     const event = {
@@ -90,7 +57,7 @@ describe('onClick', () => {
     const instance = wrapper.instance();
     jest.spyOn(instance, 'collapseOnClick');
     instance.collapseOnClick(event);
-    expect(instance.collapseOnClick).toHaveBeenCalledTimes(1);
+    expect(wrapper.state('shippingClicked')).toEqual(true);
   });
   test('should change state when description button is clicked for content hide', () => {
     const event = {
@@ -101,7 +68,7 @@ describe('onClick', () => {
     const instance = wrapper.instance();
     jest.spyOn(instance, 'collapseOnClick');
     instance.collapseOnClick(event);
-    expect(instance.collapseOnClick).toHaveBeenCalledTimes(1);
+    expect(wrapper.state('descriptionExpand')).toEqual('contentExpand');
   });
   test('should change state when description button is clicked for content expand', () => {
     const event = {
@@ -113,7 +80,7 @@ describe('onClick', () => {
     jest.spyOn(instance, 'collapseOnClick');
     instance.collapseOnClick(event);
     instance.collapseOnClick(event);
-    expect(instance.collapseOnClick).toHaveBeenCalledTimes(2);
+    expect(wrapper.state('shader')).toEqual('shaderOn');
   });
   test('should change state on random classname', () => {
     const event = {

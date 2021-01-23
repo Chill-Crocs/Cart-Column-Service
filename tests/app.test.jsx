@@ -155,8 +155,7 @@ describe('Component Did Mount', () => {
 describe('Change Zip', () => {
   test('change zipcode', () => {
     const instance = wrapper.instance();
-    jest.spyOn(instance, 'changeZip');
     instance.changeZip('33158');
-    expect(instance.changeZip).toHaveBeenCalledTimes(1);
+    expect(wrapper.state('userZip')).toEqual('33158');
   });
 });
