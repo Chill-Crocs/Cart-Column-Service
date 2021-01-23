@@ -998,7 +998,7 @@ svg {
   color: black;
 }
 
-.sent {
+.sent, .time {
   font-family: Helvetica, sans-serif;
   font-weight: 100;
   letter-spacing: 1px;
@@ -1007,6 +1007,12 @@ svg {
   text-align: right;
   margin-right: 5px;
   display: block;
+}
+
+.time {
+  text-align: center;
+  color: #595959;
+  width: 100%;
 }
 
 /******************************** SELLER STYLING END ************************************/

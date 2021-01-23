@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import Messages from './Messages';
 
 class Seller extends React.Component {
@@ -24,7 +25,8 @@ class Seller extends React.Component {
     e.preventDefault();
     let { message } = this.state;
     const { messageBox } = this.state;
-    messageBox.push(message);
+    const time = moment();
+    messageBox.push({ message, time });
     message = '';
     this.setState({ message, messageBox });
   }
