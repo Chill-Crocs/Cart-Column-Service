@@ -1,3 +1,5 @@
+/* eslint-disable func-names */
+/* eslint-disable object-shorthand */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 
@@ -26,8 +28,8 @@ describe('Expand collapsible', () => {
 
 describe('Form Submit', () => {
   const e = {
-    preventDefault: function() {},
-  }
+    preventDefault: function () {},
+  };
   test('should have a form submission', () => {
     const instance = wrapper.instance();
     jest.spyOn(instance, 'onFormSubmit');

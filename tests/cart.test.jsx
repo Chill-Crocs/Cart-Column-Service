@@ -7,7 +7,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import axios from 'axios';
 import 'regenerator-runtime/runtime';
-import App from '../client/components/App';
+import Cart from '../client/components/Cart';
 import Rating from '../client/components/Rating';
 import Info from '../client/components/Info';
 import Selector from '../client/components/Selector';
@@ -15,7 +15,7 @@ import ExtDetails from '../client/components/ExtDetails';
 
 window.HTMLElement.prototype.scrollIntoView = function () { };
 
-const wrapper = mount(<App />);
+const wrapper = mount(<Cart />);
 
 describe('App render', () => {
   test('should have correct state', () => {
